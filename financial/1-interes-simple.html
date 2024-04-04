@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAPPS - Interes Simple</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #045ebe;
+            color: #fff;
+            border-radius: 15px 15px 0 0;
+        }
+        .form-control {
+            border-radius: 10px;
+        }
+        .btn-primary {
+            border-radius: 10px;
+            background-color: #045ebe;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: hwb(22 0% 30%);
+        }
+        .table {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h1>INTERÉS SIMPLE</h1>
+                    <h3>Calculadora de Interés Simple</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="Capital" class="form-label">Capital Inicial</label>
+                            <input type="number" class="form-control" id="Capital" value="0" onChange="changeStatus(0)">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Interes" class="form-label">Interés</label>
+                            <input type="number" step="any" class="form-control" id="Interes" value="0" onChange="changeStatus(0)">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Periodo" class="form-label">Periodo</label>
+                            <input type="number" class="form-control" id="Periodo" value="0" onChange="changeStatus(0)">
+                            <select class="form-control mt-3" id="Tiempo">
+                                <option value="365">Días (Ds)</option>
+                                <option value="52">Semanas (Ss)</option>
+                                <option value="12">Meses (Ms)</option>
+                                <option value="4">Trimestres (Ts)</option>
+                                <option value="3">Cuatrimestres (Cs)</option>
+                                <option value="2">Semestres (Sm)</option>
+                                <option value="1" selected>Años (As)</option>
+                            </select>
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-block" onclick="calculate()">Calcular</button>
+                        <div class="mb-3">
+                            <label for="Beneficio" class="form-label">Beneficio</label>
+                            <input type="number" step="any" class="form-control" id="Beneficio" value="0" readonly onChange="changeStatus(0)">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Total" class="form-label">Total</label>
+                            <input type="number" step="any" class="form-control" id="Total" value="0" readonly onChange="changeStatus(0)">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h1>RESULTADOS</h1>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="ResultsTable">
+                            <thead>
+                            <tr>
+                                <th scope="col">Capital</th>
+                                <th scope="col">Interés</th>
+                                <th scope="col">Periodo</th>
+                                <th scope="col">Tiempo</th>
+                                <th scope="col">Beneficio</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/1-simpleInterest.js"></script>
+</body>
+</html>

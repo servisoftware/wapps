@@ -1,0 +1,67 @@
+var basecal = 100;
+var Status = 1;
+//future formula by 
+//exact_result = Math.round(result*basecal)/basecal;
+var Monthperyear = 12;
+function calculate(){
+    let Capital   = parseInt(document.getElementById("Capital").value);
+    let Interes   = parseInt(document.getElementById("Interes").value)/100; 
+    let Periodo   = parseInt(document.getElementById("Periodo").value);
+    let ITiempo   = document.getElementById("Tiempo");
+    let Tiempo    = parseInt(ITiempo.value);
+    var LabTiempo = ITiempo.options[ITiempo.selectedIndex].innerHTML;
+
+
+    
+    //console.log();
+    let Beneficio = Capital * (Interes / Tiempo) * Periodo;
+    let Total = Capital + Beneficio;
+    document.getElementById("Beneficio").value = Beneficio;
+    document.getElementById("Total").value = Beneficio + Capital;
+
+    console.log(`Capital: ${Capital}`);
+    console.log(`Interes: ${Interes}`);
+    console.log(`Periodo: ${Periodo}`);
+    console.log(`Tiempo:  ${Tiempo}` );
+    console.log(`Label:   ${Status}` );
+    console.log(`Status:  ${LabTiempo}` );
+
+    if(Status === 0){
+        
+        
+        var resultsTable = document.getElementById('ResultsTable');
+        var tbody = resultsTable.getElementsByTagName('tbody')[0];
+     
+        var row = document.createElement('tr');
+
+        var vCapital   = document.createElement('td');
+        var vInteres   = document.createElement('td');
+        var vPeriodo   = document.createElement('td');
+        var vTiempo    = document.createElement('td');
+        var vBeneficio = document.createElement('td');
+        var vTotal     = document.createElement('td');
+        
+        vCapital.innerHTML   = Capital;
+        vInteres.innerHTML   = Interes;
+        vPeriodo.innerHTML   = Periodo;
+        vTiempo.innerHTML    = Tiempo;
+        vBeneficio.innerHTML = Beneficio;
+        vTotal.innerHTML     = Total;
+
+        row.appendChild(vCapital);
+        row.appendChild(vInteres);
+        row.appendChild(vPeriodo);
+        row.appendChild(vTiempo);
+        row.appendChild(vBeneficio);
+        row.appendChild(vTotal);
+
+        tbody.appendChild(row);
+
+        changeStatus(1);
+    }   
+}
+
+function changeStatus(newStatus){
+    Status = newStatus ;
+    console.log(`new status: ${Status}`);
+}

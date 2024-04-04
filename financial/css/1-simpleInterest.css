@@ -1,0 +1,33 @@
+body {
+    background-color: #f8f9fa;
+}
+.container {
+    margin-top: 50px;
+}
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.card-header {
+    background-color: #045ebe;
+    color: #fff;
+    border-radius: 15px 15px 0 0;
+}
+.form-control {
+    border-radius: 10px;
+}
+.btn-primary {
+    border-radius: 10px;
+    background-color: #045ebe;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: hwb(22 0% 30%);
+}
+.table {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+    
