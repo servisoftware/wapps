@@ -1,0 +1,38 @@
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8081:80"
+    volumes:
+      - .:/usr/share/nginx/html
+      - ./nginx/conf:/etc/nginx/conf.d
+    networks:
+      - wapps-net
+
+  php:
+    build: ./php
+    volumes:
+      - .:/var/www/html
+    profiles:
+      - backend
+    networks:
+      - wapps-net
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: devuser
+      POSTGRES_PASSWORD: devpassword
+      POSTGRES_DB: devdb
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    profiles:
+      - backend
+    networks:
+      - wapps-net
+
+networks:
+  wapps-net:
+    driver: bridge
