@@ -1,2 +1,2 @@
 # wapps
-Web Apps for Small and Medium Companies
+Web Apps for Small Companies
