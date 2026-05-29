@@ -1,0 +1,136 @@
+/* ============================================
+   Wapps · layout.css
+   Estructura compartida en TODAS las páginas:
+   header, footer, breadcrumb.
+   ============================================ */
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(251, 251, 248, 0.85);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+.logo:hover { color: var(--color-primary); }
+.logo-dot { color: var(--color-accent); }
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+.main-nav a {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.main-nav a:hover { color: var(--color-text); }
+.main-nav .nav-cta {
+  color: var(--color-primary);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  transition: all var(--t-base);
+}
+.main-nav .nav-cta:hover {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+@media (max-width: 600px) {
+  .main-nav a:not(.nav-cta) { display: none; }
+}
+
+/* ---------- Breadcrumb (páginas internas) ---------- */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  padding: var(--space-4) 0;
+}
+.breadcrumb a {
+  color: var(--color-text-muted);
+}
+.breadcrumb a:hover {
+  color: var(--color-primary);
+}
+.breadcrumb-sep {
+  margin: 0 var(--space-2);
+  color: var(--color-text-soft);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--color-text);
+  color: rgba(255, 255, 255, 0.7);
+  padding: var(--space-10) 0 var(--space-5);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+@media (min-width: 600px) {
+  .footer-inner { grid-template-columns: 2fr 1fr 1fr; gap: var(--space-8); }
+}
+
+.footer-brand .logo {
+  color: white;
+  display: inline-block;
+  margin-bottom: var(--space-3);
+}
+.footer-brand .logo:hover { color: white; }
+.footer-brand p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  max-width: 320px;
+  margin: 0;
+}
+
+.footer-col h4 {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.8rem;
+  margin-bottom: var(--space-3);
+}
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-col li { margin-bottom: var(--space-2); }
+.footer-col a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+.footer-col a:hover { color: var(--color-accent); }
+
+.footer-meta {
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-meta p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}

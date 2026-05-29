@@ -1,0 +1,159 @@
+<!--
+  ╔════════════════════════════════════════════════════════════╗
+  ║  WAPPS · TEMPLATE DE PÁGINA DE HERRAMIENTA                 ║
+  ║                                                            ║
+  ║  Cómo usar:                                                ║
+  ║  1) Copia este archivo a /categoria/slug-herramienta/index.html
+  ║  2) Reemplaza los marcadores {{...}} con valores reales    ║
+  ║  3) Llena el bloque <main> con la calculadora real         ║
+  ║  4) Crea script.js al lado con la lógica de la calculadora ║
+  ║  5) Agrega la URL al sitemap.xml y al array TOOLS de       ║
+  ║     /assets/js/search.js                                   ║
+  ╚════════════════════════════════════════════════════════════╝
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1B4965">
+
+  <title>{{TITULO}} — Wapps</title>
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <link rel="canonical" href="https://wapps.co/{{CATEGORIA}}/{{SLUG}}/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:title" content="{{TITULO}} — Wapps">
+  <meta property="og:description" content="{{META_DESCRIPTION}}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap">
+
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+  <link rel="stylesheet" href="/{{CATEGORIA}}/_shared/styles.css">
+  <!-- Opcional: <link rel="stylesheet" href="styles.css"> si esta página tiene estilos propios -->
+
+  <!-- Schema.org HowTo + FAQPage (ver más abajo) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "{{TITULO}}",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://wapps.co/{{CATEGORIA}}/{{SLUG}}/",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "COP" }
+  }
+  </script>
+</head>
+<body class="tool-page">
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">wapps<span class="logo-dot">.</span></a>
+      <nav class="main-nav">
+        <a href="/{{CATEGORIA}}/">Volver a {{CATEGORIA_NOMBRE}}</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <!-- 1. Breadcrumb + tag -->
+      <nav class="breadcrumb" aria-label="Migas de pan">
+        <a href="/">Inicio</a><span class="breadcrumb-sep">›</span>
+        <a href="/{{CATEGORIA}}/">{{CATEGORIA_NOMBRE}}</a><span class="breadcrumb-sep">›</span>
+        <span>{{TITULO}}</span>
+      </nav>
+
+      <header class="tool-header">
+        <span class="tag">{{CATEGORIA_NOMBRE}}</span>
+        <h1>{{TITULO}}</h1>
+        <p class="tool-subtitle">{{SUBTITULO}}</p>
+        <p class="tool-updated">Actualizado para {{ANO}}</p>
+      </header>
+
+      <!-- 2. Calculadora (lo único arriba del fold) -->
+      <section class="calculator" aria-label="Calculadora">
+        <!-- TODO: inputs y output específicos de esta herramienta -->
+      </section>
+
+      <!-- 3. Acciones -->
+      <div class="tool-actions">
+        <button class="btn btn-secondary" id="share-whatsapp">Compartir por WhatsApp</button>
+        <button class="btn btn-secondary" id="share-copy">Copiar resultado</button>
+        <button class="btn btn-secondary" onclick="window.print()">Imprimir</button>
+      </div>
+
+      <!-- 4. ¿Qué es / para qué sirve? -->
+      <section class="tool-section">
+        <h2>¿Qué es {{TITULO_CORTO}}?</h2>
+        <p>TODO</p>
+      </section>
+
+      <!-- 5. Cómo se calcula (fórmula) -->
+      <section class="tool-section">
+        <h2>Cómo se calcula</h2>
+        <p>TODO</p>
+        <pre class="formula">TODO: fórmula</pre>
+      </section>
+
+      <!-- 6. Ejemplo numérico -->
+      <section class="tool-section">
+        <h2>Ejemplo paso a paso</h2>
+        <p>TODO</p>
+      </section>
+
+      <!-- 7. Preguntas frecuentes -->
+      <section class="tool-section faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Preguntas frecuentes</h2>
+        <details>
+          <summary>TODO: pregunta 1</summary>
+          <p>TODO: respuesta.</p>
+        </details>
+      </section>
+
+      <!-- 8. Validación oficial (solo si aplica) -->
+      <aside class="official-notice">
+        <strong>Nota:</strong> TODO. Verifica con la fuente oficial cuando tu decisión sea importante.
+      </aside>
+
+      <!-- 9. Herramientas relacionadas -->
+      <section class="tool-section">
+        <h2>Herramientas relacionadas</h2>
+        <div class="related">
+          <!-- TODO: 2-4 cards -->
+        </div>
+      </section>
+
+      <!-- 10. Feedback -->
+      <section class="feedback" aria-label="Tu opinión">
+        <p>¿Esta calculadora te sirvió?</p>
+        <button class="btn btn-secondary" data-feedback="up">👍 Sí</button>
+        <button class="btn btn-secondary" data-feedback="down">👎 No</button>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-meta">
+      <p>© <span id="year">2026</span> Wapps. Hecho con cuidado en Colombia. <a href="/" style="color: var(--color-accent);">Ver todas las herramientas</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/utils/format.js" defer></script>
+  <script src="/assets/js/utils/validate.js" defer></script>
+  <script src="/assets/js/utils/share.js" defer></script>
+  <script src="/assets/js/utils/analytics.js" defer></script>
+  <script src="/{{CATEGORIA}}/_shared/{{SHARED_JS}}" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

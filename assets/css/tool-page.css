@@ -1,0 +1,177 @@
+/* ============================================
+   Wapps · tool-page.css
+   Estilos compartidos por TODAS las páginas de herramienta.
+   Cargar en cada index.html de calculadora, después de
+   base/layout/components.
+   ============================================ */
+
+/* ---------- Estructura general ---------- */
+.tool-page main {
+  padding-bottom: var(--space-12);
+}
+
+.tool-header {
+  padding: var(--space-6) 0 var(--space-5);
+}
+
+.tool-header h1 {
+  font-size: clamp(1.75rem, 2.5vw + 1rem, 2.75rem);
+  margin: var(--space-2) 0;
+}
+
+.tool-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  max-width: 720px;
+}
+
+.tool-updated {
+  font-size: 0.8rem;
+  color: var(--color-text-soft);
+  margin-top: var(--space-3);
+}
+
+/* ---------- Calculadora (el corazón de cada página) ---------- */
+.calculator {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+  max-width: 720px;
+  margin: 0 auto var(--space-6);
+}
+
+.calc-field {
+  margin-bottom: var(--space-4);
+}
+.calc-field label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+.calc-field .hint {
+  font-size: 0.8rem;
+  color: var(--color-text-soft);
+  margin-top: var(--space-1);
+}
+
+.calc-input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  font-variant-numeric: tabular-nums;
+}
+.calc-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(27, 73, 101, 0.12);
+}
+
+.calc-result {
+  margin-top: var(--space-5);
+  padding: var(--space-5);
+  background: var(--color-bg-muted);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+}
+.calc-result-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-1);
+}
+.calc-result-value {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Acciones (compartir, imprimir) ---------- */
+.tool-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-5) 0 var(--space-8);
+  justify-content: center;
+}
+
+/* ---------- Secciones de contenido ---------- */
+.tool-section {
+  max-width: 720px;
+  margin: var(--space-8) auto 0;
+}
+.tool-section h2 {
+  font-size: clamp(1.35rem, 1.5vw + 1rem, 1.75rem);
+  margin-bottom: var(--space-4);
+}
+.tool-section p { font-size: 1rem; line-height: 1.7; }
+
+.formula {
+  background: var(--color-bg-muted);
+  border-left: 3px solid var(--color-primary);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  margin: var(--space-4) 0;
+  overflow-x: auto;
+}
+
+/* ---------- FAQ ---------- */
+.faq details {
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-4) 0;
+}
+.faq summary {
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq summary::after {
+  content: "+";
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  transition: transform var(--t-base);
+}
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details > p { margin-top: var(--space-3); color: var(--color-text-muted); }
+
+/* ---------- Validación oficial ---------- */
+.official-notice {
+  background: rgba(244, 162, 97, 0.12);
+  border-left: 3px solid var(--color-accent);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-sm);
+  margin: var(--space-5) 0;
+}
+
+/* ---------- Herramientas relacionadas ---------- */
+.related {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+@media (min-width: 600px) { .related { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .related { grid-template-columns: repeat(3, 1fr); } }
+
+/* ---------- Feedback ---------- */
+.feedback {
+  text-align: center;
+  margin-top: var(--space-8);
+  padding: var(--space-5);
+  background: var(--color-bg-muted);
+  border-radius: var(--radius-md);
+}
