@@ -25,7 +25,7 @@
     { name: 'VPN', tag: 'Financiera', keywords: 'vpn valor presente neto proyecto', url: '/financieras/vpn/', available: false },
 
     // Tributarias
-    { name: 'Calculadora de IVA', tag: 'Tributaria', keywords: 'iva impuesto valor agregado 19 5 incluido', url: '/tributarias/calculadora-iva/', available: false },
+    { name: 'Calculadora de IVA', tag: 'Tributaria', keywords: 'iva impuesto valor agregado 19 5 incluido', url: '/tributarias/calculadora-iva/', available: true },
     { name: 'Retención en la fuente', tag: 'Tributaria', keywords: 'retencion fuente retefuente honorarios servicios', url: '/tributarias/retencion-fuente/', available: false },
     { name: 'ICA', tag: 'Tributaria', keywords: 'ica industria comercio municipio', url: '/tributarias/calculadora-ica/', available: false },
     { name: 'Conversor UVT', tag: 'Tributaria', keywords: 'uvt valor pesos cuanto vale', url: '/tributarias/conversor-uvt/', available: false },

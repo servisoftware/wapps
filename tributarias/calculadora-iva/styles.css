@@ -1,0 +1,292 @@
+/* ============================================
+   Wapps · tributarias/calculadora-iva/styles.css
+   Estilos específicos de esta calculadora.
+   ============================================ */
+
+/* ---------- Selector de modo (toggle Sumar/Sacar IVA) ---------- */
+.mode-switch {
+  display: flex;
+  gap: 0;
+  background: var(--color-bg-muted);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-5);
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: transparent;
+  border: 0;
+  border-radius: calc(var(--radius-md) - 4px);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--t-base);
+}
+
+.mode-btn:hover { color: var(--color-text); }
+
+.mode-btn.active {
+  background: var(--color-bg-elevated);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 480px) {
+  .mode-btn { font-size: 0.82rem; padding: 8px 10px; }
+}
+
+/* ---------- Input con prefijo $ ---------- */
+.input-wrapper {
+  position: relative;
+}
+
+.input-prefix {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.calc-input.has-prefix {
+  padding-left: 28px;
+}
+
+/* Input grande, números legibles */
+.iva-calc .calc-input {
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* ---------- Chips de tarifa ---------- */
+.tarifa-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--t-base);
+  font-variant-numeric: tabular-nums;
+}
+
+.chip:hover {
+  border-color: var(--color-primary);
+}
+
+.chip.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+/* Tarifa personalizada inline */
+.tarifa-custom {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  max-width: 200px;
+  position: relative;
+}
+
+.tarifa-custom .calc-input {
+  padding-right: 32px;
+}
+
+.input-suffix {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+/* ---------- Bloque de resultados ---------- */
+.result-block {
+  margin-top: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+.result-row:last-child { border-bottom: 0; }
+
+.result-label {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.result-value {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+  transition: color 250ms ease;
+}
+
+/* La fila del IVA destacada con acento */
+.result-row-accent {
+  background: rgba(244, 162, 97, 0.06);
+}
+.result-row-accent .result-value {
+  color: var(--color-accent-dark);
+}
+
+/* La fila del total: más grande, color primario */
+.result-row-total {
+  background: var(--color-bg-muted);
+  padding: var(--space-5);
+}
+.result-row-total .result-label {
+  font-weight: 500;
+  color: var(--color-text);
+}
+.result-row-total .result-value {
+  font-size: 1.85rem;
+  color: var(--color-primary);
+}
+
+/* Flash sutil cuando el valor cambia (lo activamos por JS) */
+.result-value.flash {
+  color: var(--color-primary-light);
+}
+
+/* ---------- Nota de fórmula ---------- */
+.formula-note {
+  margin-top: var(--space-4);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+.formula-note code {
+  background: var(--color-bg-muted);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+/* ---------- Botón copiar con estado ---------- */
+.btn .btn-success {
+  color: var(--color-primary);
+}
+
+/* ---------- Tarjetas de tarifa explicadas ---------- */
+.tarifa-explainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+@media (min-width: 700px) {
+  .tarifa-explainer { grid-template-columns: repeat(3, 1fr); }
+}
+
+.tarifa-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.tarifa-card-rate {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: var(--space-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.tarifa-card h3 {
+  font-size: 1.1rem !important;
+  margin-bottom: var(--space-2) !important;
+}
+
+.tarifa-card p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ---------- Ejemplo paso a paso ---------- */
+.example-steps {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0;
+}
+
+.example-steps li {
+  counter-increment: step;
+  position: relative;
+  padding: var(--space-3) 0 var(--space-3) var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+}
+.example-steps li:last-child { border-bottom: 0; }
+
+.example-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: var(--space-3);
+  width: 32px;
+  height: 32px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+/* ---------- Feedback ---------- */
+.feedback-prompt {
+  font-weight: 500;
+  margin-bottom: var(--space-3);
+}
+
+.feedback-buttons {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.feedback-thanks {
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-top: var(--space-3);
+}

@@ -1,53 +1,362 @@
-<!--
-  ════════════════════════════════════════════════════════════
-  PLACEHOLDER · Calculadora de IVA
-  ════════════════════════════════════════════════════════════
-  Categoría: Tributarias
-  URL final: /wapps.co/tributarias/calculadora-iva/
-  Archivo a usar como base: /_template.html
-
-  Para construir esta calculadora:
-  1. Copia el contenido de /_template.html aquí.
-  2. Reemplaza los marcadores:
-     {{TITULO}}            → Calculadora de IVA
-     {{CATEGORIA}}         → tributarias
-     {{CATEGORIA_NOMBRE}}  → Tributarias
-     {{SLUG}}              → calculadora-iva
-     {{SHARED_JS}}         → impuestos.js
-  3. Construye la calculadora dentro de <section class="calculator">
-  4. Llena el contenido teórico (qué es, cómo se calcula, ejemplo, FAQ).
-  5. Implementa la lógica en script.js (ya está al lado, también placeholder).
-  6. Cuando esté lista:
-     - cambia su card en /tributarias/index.html (quita "Próximamente")
-     - agrega la URL al sitemap.xml
-     - agrégala al array TOOLS en /assets/js/search.js
--->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Calculadora de IVA — En construcción — Wapps</title>
-  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1B4965">
+
+  <title>Calculadora de IVA en Colombia — Wapps</title>
+  <meta name="description" content="Calcula el IVA al 19%, 5% o 0% de cualquier monto en segundos. Suma el IVA a un precio o sácalo de un precio que ya lo incluye. Gratis, sin registro.">
+  <meta name="keywords" content="calculadora IVA Colombia, calcular IVA 19, sacar IVA de un precio, IVA incluido, IVA al 5">
+
+  <meta property="og:title" content="Calculadora de IVA en Colombia — Wapps">
+  <meta property="og:description" content="Calcula el IVA al 19%, 5% o 0% en segundos. Suma o saca el IVA de cualquier precio. Gratis.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:url" content="https://wapps.co/tributarias/calculadora-iva/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calculadora de IVA en Colombia — Wapps">
+
+  <link rel="canonical" href="https://wapps.co/tributarias/calculadora-iva/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap">
+
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+  <link rel="stylesheet" href="/tributarias/_shared/styles.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org: WebApplication + HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de IVA",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://wapps.co/tributarias/calculadora-iva/",
+    "description": "Calcula el IVA al 19%, 5% o 0% de cualquier monto. Suma el IVA o sácalo de un precio que ya lo incluye.",
+    "inLanguage": "es-CO",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "COP" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto es el IVA en Colombia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En Colombia la tarifa general del IVA es del 19%. Algunos productos tienen tarifa reducida del 5% (como ciertos productos agrícolas y la primera vivienda VIS). Otros bienes son exentos (tarifa 0%), como los libros y parte de la canasta básica."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo se saca el IVA de un precio que ya lo incluye?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para sacar el IVA de un precio que ya lo incluye, divides el precio entre 1 más la tarifa expresada como decimal. Por ejemplo, un producto a 119.000 pesos con IVA del 19% incluido: 119.000 / 1,19 = 100.000 pesos de base, y 19.000 pesos de IVA."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿La calculadora de Wapps es oficial de la DIAN?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Wapps es una herramienta independiente que aplica las tarifas vigentes para facilitar tus cálculos. Para presentar declaraciones, consulta siempre las fuentes oficiales de la DIAN o a tu contador."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si un producto es exento o excluido del IVA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Exento significa que el producto está gravado a tarifa 0% (sí causa IVA, pero es cero). Excluido significa que no causa IVA en absoluto. La diferencia importa para los responsables del impuesto, porque los exentos pueden descontar el IVA pagado en sus compras, los excluidos no."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
+<body class="tool-page">
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="logo">wapps<span class="logo-dot">.</span></a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="/tributarias/">Volver a Tributarias</a>
+      </nav>
     </div>
   </header>
-  <main style="min-height: 60vh; display: flex; align-items: center;">
-    <div class="container" style="text-align: center; max-width: 540px; margin: 0 auto;">
-      <span class="tag">Tributarias</span>
-      <h1 style="margin-top: 1rem;">Calculadora de IVA</h1>
-      <p style="color: var(--color-text-muted); margin-top: 1rem;">Esta calculadora está en construcción. Estamos puliendo las fórmulas y el contenido explicativo. Vuelve pronto.</p>
-      <div style="margin-top: 2rem;">
-        <a href="/tributarias/" class="btn btn-secondary">Ver otras herramientas de Tributarias</a>
+
+  <main id="main">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Migas de pan">
+        <a href="/">Inicio</a><span class="breadcrumb-sep">›</span>
+        <a href="/tributarias/">Tributarias</a><span class="breadcrumb-sep">›</span>
+        <span>Calculadora de IVA</span>
+      </nav>
+
+      <!-- Header de la herramienta -->
+      <header class="tool-header">
+        <span class="tag">Tributaria</span>
+        <h1>Calculadora de IVA en Colombia</h1>
+        <p class="tool-subtitle">Suma el IVA al precio, o sácalo de un precio que ya lo incluye. Tarifas del 19%, 5% y 0% — o pon una personalizada.</p>
+        <p class="tool-updated">Actualizado para 2026 · Tarifa general vigente: 19%</p>
+      </header>
+
+      <!-- ============ CALCULADORA ============ -->
+      <section class="calculator iva-calc" aria-label="Calculadora de IVA">
+
+        <!-- Selector de modo -->
+        <div class="mode-switch" role="tablist" aria-label="Modo de cálculo">
+          <button type="button" class="mode-btn active" data-mode="agregar" role="tab" aria-selected="true">
+            Sumar IVA al precio
+          </button>
+          <button type="button" class="mode-btn" data-mode="quitar" role="tab" aria-selected="false">
+            Sacar IVA de un precio
+          </button>
+        </div>
+
+        <!-- Input de monto -->
+        <div class="calc-field">
+          <label for="monto" id="monto-label">Precio sin IVA</label>
+          <div class="input-wrapper">
+            <span class="input-prefix" aria-hidden="true">$</span>
+            <input
+              type="text"
+              inputmode="decimal"
+              id="monto"
+              class="calc-input has-prefix"
+              placeholder="1.000.000"
+              autocomplete="off"
+              aria-describedby="monto-hint">
+          </div>
+          <p class="hint" id="monto-hint">Escribe el monto en pesos. Puedes usar puntos como separador de miles.</p>
+        </div>
+
+        <!-- Selector de tarifa -->
+        <div class="calc-field">
+          <label>Tarifa de IVA</label>
+          <div class="tarifa-chips" role="radiogroup" aria-label="Tarifa de IVA">
+            <button type="button" class="chip active" data-tarifa="19" role="radio" aria-checked="true">19%</button>
+            <button type="button" class="chip" data-tarifa="5" role="radio" aria-checked="false">5%</button>
+            <button type="button" class="chip" data-tarifa="0" role="radio" aria-checked="false">0%</button>
+            <button type="button" class="chip" data-tarifa="otra" role="radio" aria-checked="false">Otra</button>
+          </div>
+          <div class="tarifa-custom" id="tarifa-custom" hidden>
+            <input
+              type="number"
+              id="tarifa-personalizada"
+              class="calc-input"
+              placeholder="Ej: 8"
+              min="0"
+              max="100"
+              step="0.1"
+              aria-label="Tarifa personalizada">
+            <span class="input-suffix">%</span>
+          </div>
+        </div>
+
+        <!-- Resultados -->
+        <div class="result-block" aria-live="polite" aria-atomic="true">
+          <div class="result-row">
+            <span class="result-label" id="label-base">Precio sin IVA</span>
+            <span class="result-value" id="result-base">$0</span>
+          </div>
+          <div class="result-row result-row-accent">
+            <span class="result-label" id="label-iva">IVA (19%)</span>
+            <span class="result-value" id="result-iva">$0</span>
+          </div>
+          <div class="result-row result-row-total">
+            <span class="result-label" id="label-total">Total con IVA</span>
+            <span class="result-value" id="result-total">$0</span>
+          </div>
+        </div>
+
+        <p class="formula-note" id="formula-note">
+          Fórmula: <code>IVA = monto × (tarifa / 100)</code>
+        </p>
+      </section>
+
+      <!-- Acciones -->
+      <div class="tool-actions">
+        <button class="btn btn-secondary" id="share-whatsapp" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.5 14.4l-2.5-1.2c-.3-.1-.6-.1-.9.1l-1.1 1c-.2.2-.5.2-.7.1-.9-.5-1.9-1.4-2.5-2.3-.2-.2-.1-.5.1-.7l.7-.9c.2-.3.3-.6.1-.9L9.5 7.1c-.2-.5-.8-.7-1.2-.5l-1.1.5c-.5.2-.8.7-.8 1.2.2 1.7 1 4 3.5 6.5 2.5 2.5 4.8 3.3 6.5 3.5.5 0 1-.3 1.2-.8l.5-1.1c.2-.4 0-1-.5-1.2zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.4c1.5.9 3.2 1.4 5 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+          </svg>
+          Compartir por WhatsApp
+        </button>
+        <button class="btn btn-secondary" id="share-copy" type="button">
+          <span class="btn-default">Copiar resultado</span>
+          <span class="btn-success" hidden>✓ Copiado</span>
+        </button>
+        <button class="btn btn-secondary" onclick="window.print()" type="button">Imprimir</button>
       </div>
+
+      <!-- ============ CONTENIDO EDUCATIVO ============ -->
+
+      <section class="tool-section">
+        <h2>¿Qué es el IVA?</h2>
+        <p>El IVA (Impuesto al Valor Agregado) es un impuesto al consumo que se paga cuando compras bienes o contratas servicios en Colombia. Lo recauda el vendedor en cada transacción y luego lo entrega a la DIAN.</p>
+        <p>Para un comerciante o emprendedor responsable de IVA, el cálculo aparece todos los días: al poner precio a un producto, al cotizar un servicio, al revisar una factura del proveedor. Saber sumarlo y separarlo del precio total es una destreza básica del negocio.</p>
+      </section>
+
+      <section class="tool-section">
+        <h2>Las tres tarifas que verás en Colombia</h2>
+        <p>La calculadora cubre los tres casos vigentes:</p>
+
+        <div class="tarifa-explainer">
+          <article class="tarifa-card">
+            <div class="tarifa-card-rate">19%</div>
+            <h3>Tarifa general</h3>
+            <p>La que aplica a la mayoría de bienes y servicios: ropa, electrodomésticos, comidas en restaurantes (vía impoconsumo), servicios profesionales gravados, tecnología.</p>
+          </article>
+          <article class="tarifa-card">
+            <div class="tarifa-card-rate">5%</div>
+            <h3>Tarifa reducida</h3>
+            <p>Aplica a productos específicos: algunos productos agrícolas, café tostado, primera vivienda VIS, productos para uso veterinario, entre otros listados en el Estatuto Tributario.</p>
+          </article>
+          <article class="tarifa-card">
+            <div class="tarifa-card-rate">0%</div>
+            <h3>Exentos</h3>
+            <p>Algunos bienes están gravados pero a tarifa cero: libros, parte de la canasta familiar básica, exportaciones. No es lo mismo que <em>excluidos</em> (esos no causan IVA).</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="tool-section">
+        <h2>Cómo se calcula el IVA</h2>
+        <p>Hay dos escenarios y la calculadora resuelve ambos:</p>
+
+        <h3 style="margin-top: 1.5rem; font-size: 1.15rem;">Si tienes el precio sin IVA y quieres sumarlo</h3>
+        <pre class="formula">IVA   = monto × (tarifa / 100)
+Total = monto + IVA</pre>
+        <p>Ejemplo: un producto a $1.000.000 con IVA al 19%. El IVA es $190.000, el total es $1.190.000.</p>
+
+        <h3 style="margin-top: 1.5rem; font-size: 1.15rem;">Si tienes un precio que ya incluye IVA y quieres separarlo</h3>
+        <pre class="formula">Base  = monto / (1 + tarifa/100)
+IVA   = monto - base</pre>
+        <p>Ejemplo: pagaste $1.190.000 IVA incluido al 19%. La base es $1.000.000 y el IVA es $190.000.</p>
+
+        <p class="hint">El error común es restar simplemente el 19% al total. <strong>No funciona</strong>: si haces $1.190.000 × 0,19 = $226.100 — esa cifra está mal. La base se obtiene dividiendo entre 1,19, no restando el 19%.</p>
+      </section>
+
+      <section class="tool-section">
+        <h2>Ejemplo paso a paso</h2>
+        <p>Vendes una asesoría profesional por $500.000 + IVA al 19%.</p>
+        <ol class="example-steps">
+          <li>Tomas el monto base: <strong>$500.000</strong></li>
+          <li>Multiplicas por la tarifa expresada como decimal: 500.000 × 0,19 = <strong>$95.000</strong> de IVA</li>
+          <li>Sumas: 500.000 + 95.000 = <strong>$595.000</strong> que cobras al cliente</li>
+          <li>De esos $595.000, los $95.000 son del IVA que debes declarar y pagar a la DIAN. Los otros $500.000 son tu ingreso.</li>
+        </ol>
+      </section>
+
+      <!-- FAQ -->
+      <section class="tool-section faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Preguntas frecuentes</h2>
+
+        <details>
+          <summary>¿Cuánto es el IVA en Colombia?</summary>
+          <p>La tarifa general es <strong>19%</strong>. Algunos productos tienen tarifa reducida del 5% (ciertos productos agrícolas, vivienda VIS) y otros son exentos (tarifa 0%, como libros y parte de la canasta básica).</p>
+        </details>
+
+        <details>
+          <summary>¿Cómo saco el IVA de un precio que ya lo incluye?</summary>
+          <p>Divides el precio entre <strong>1 + tarifa decimal</strong>. Por ejemplo, a $119.000 con IVA del 19%: $119.000 / 1,19 = $100.000 de base y $19.000 de IVA. Si simplemente restas el 19% (multiplicar por 0,81), te da un resultado equivocado.</p>
+        </details>
+
+        <details>
+          <summary>¿Esta calculadora reemplaza a la DIAN?</summary>
+          <p>No. Wapps es una herramienta independiente. Para presentar declaraciones oficiales o tomar decisiones importantes, consulta siempre las fuentes oficiales de la DIAN o a tu contador.</p>
+        </details>
+
+        <details>
+          <summary>¿Qué diferencia hay entre exento y excluido?</summary>
+          <p><strong>Exento</strong> está gravado a tarifa 0% — sí causa IVA, pero es cero, y el responsable puede descontar el IVA que pagó en sus compras. <strong>Excluido</strong> no causa IVA en absoluto y el responsable no puede descontar el IVA de sus compras relacionadas.</p>
+        </details>
+
+        <details>
+          <summary>¿Si soy persona natural debo cobrar IVA?</summary>
+          <p>Solo si eres responsable de IVA. Por defecto los pequeños comerciantes y profesionales independientes no lo son, salvo que superen ciertos topes de ingresos o tengan establecimiento abierto al público. Si tu actividad supera los umbrales del régimen simplificado, debes inscribirte como responsable de IVA en el RUT.</p>
+        </details>
+
+        <details>
+          <summary>¿Los servicios digitales tienen IVA?</summary>
+          <p>Sí, la mayoría sí. Plataformas como Netflix, Spotify, servicios cloud y software por suscripción están gravados con IVA al 19%. Si eres prestador colombiano de servicios digitales, debes cobrarlo y declararlo.</p>
+        </details>
+      </section>
+
+      <!-- Nota oficial -->
+      <aside class="official-notice">
+        <strong>Importante:</strong> esta calculadora aplica las tarifas vigentes de IVA en Colombia para 2026, pero la legislación tributaria cambia. Para temas declarativos, factura electrónica o decisiones contables importantes, valida siempre con tu contador o con la <a href="https://www.dian.gov.co/" target="_blank" rel="noopener nofollow">DIAN</a>.
+      </aside>
+
+      <!-- Herramientas relacionadas -->
+      <section class="tool-section">
+        <h2>Herramientas relacionadas</h2>
+        <div class="related">
+          <a href="/tributarias/retencion-fuente/" class="tool-card">
+            <span class="tool-tag">Tributaria</span>
+            <h3>Retención en la fuente</h3>
+            <p>Calcula la retención por concepto: servicios, honorarios, compras.</p>
+            <span class="tool-soon">Próximamente</span>
+          </a>
+          <a href="/tributarias/conversor-uvt/" class="tool-card">
+            <span class="tool-tag">Tributaria</span>
+            <h3>Conversor UVT a pesos</h3>
+            <p>Convierte rápido la UVT vigente al valor en pesos.</p>
+            <span class="tool-soon">Próximamente</span>
+          </a>
+          <a href="/operativas/precio-venta-sugerido/" class="tool-card">
+            <span class="tool-tag">Operativa</span>
+            <h3>Precio de venta sugerido</h3>
+            <p>Calcula el precio de venta con margen e IVA.</p>
+            <span class="tool-soon">Próximamente</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Feedback -->
+      <section class="feedback" aria-label="Tu opinión">
+        <p class="feedback-prompt">¿Esta calculadora te sirvió?</p>
+        <div class="feedback-buttons">
+          <button class="btn btn-secondary" data-feedback="up" type="button">👍 Sí, gracias</button>
+          <button class="btn btn-secondary" data-feedback="down" type="button">👎 No del todo</button>
+        </div>
+        <p class="feedback-thanks" hidden>¡Gracias por avisarnos!</p>
+      </section>
+
     </div>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-meta">
+      <p>© <span id="year">2026</span> Wapps. Hecho con cuidado en Colombia. <a href="/" style="color: var(--color-accent);">Ver todas las herramientas</a></p>
+    </div>
+  </footer>
+
+  <!-- Cargar utilidades antes que el script de la calculadora -->
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/utils/format.js" defer></script>
+  <script src="/assets/js/utils/validate.js" defer></script>
+  <script src="/assets/js/utils/share.js" defer></script>
+  <script src="/assets/js/utils/analytics.js" defer></script>
+  <script src="/tributarias/_shared/impuestos.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
