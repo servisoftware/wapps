@@ -1,0 +1,196 @@
+/* ============================================
+   Wapps · tributarias/conversor-uvt/styles.css
+   ============================================ */
+
+/* ---------- Toggle de dirección ---------- */
+.mode-switch {
+  display: flex;
+  gap: 0;
+  background: var(--color-bg-muted);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-5);
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: transparent;
+  border: 0;
+  border-radius: calc(var(--radius-md) - 4px);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--t-base);
+}
+.mode-btn:hover { color: var(--color-text); }
+.mode-btn.active {
+  background: var(--color-bg-elevated);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- Selector de año ---------- */
+.year-selector {
+  max-width: 280px;
+}
+.year-select {
+  width: 100%;
+  appearance: none;
+  background: var(--color-bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%235C6975' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E") no-repeat right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+/* ---------- Input con unidad ---------- */
+.input-wrapper {
+  position: relative;
+}
+.input-unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+.uvt-calc .r3-input {
+  padding-right: 60px;
+  font-size: 1.25rem;
+}
+
+/* ---------- Bloque de resultado ---------- */
+.result-box {
+  margin-top: var(--space-5);
+  padding: var(--space-5);
+  background: var(--color-bg-muted);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.result-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+  font-weight: 500;
+}
+
+.result-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 500;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  margin-bottom: var(--space-2);
+}
+
+.result-formula {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Tabla de referencia ---------- */
+.ref-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin: var(--space-4) 0;
+}
+
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.ref-table th {
+  background: var(--color-bg-muted);
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ref-table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  font-variant-numeric: tabular-nums;
+}
+.ref-table tr:last-child td { border-bottom: 0; }
+
+.ref-table td:first-child {
+  font-weight: 500;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.ref-table td:nth-child(2) {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ref-table td:last-child {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.ref-table tr.is-current td {
+  background: rgba(244, 162, 97, 0.08);
+}
+.ref-table tr.is-current td:first-child::after {
+  content: "actual";
+  font-size: 0.7rem;
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  padding: 1px 8px;
+  border-radius: 999px;
+  margin-left: var(--space-2);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 540px) {
+  .ref-table { font-size: 0.85rem; }
+  .ref-table th, .ref-table td { padding: var(--space-2) var(--space-3); }
+}
+
+/* ---------- Lista de usos ---------- */
+.usage-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0;
+}
+.usage-list li {
+  position: relative;
+  padding: var(--space-3) 0 var(--space-3) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.usage-list li:last-child { border-bottom: 0; }
+.usage-list li::before {
+  content: "›";
+  position: absolute;
+  left: 6px;
+  top: var(--space-3);
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1;
+}

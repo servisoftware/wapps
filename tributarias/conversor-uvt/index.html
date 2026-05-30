@@ -1,53 +1,312 @@
-<!--
-  ════════════════════════════════════════════════════════════
-  PLACEHOLDER · Conversor UVT a pesos
-  ════════════════════════════════════════════════════════════
-  Categoría: Tributarias
-  URL final: /wapps.co/tributarias/conversor-uvt/
-  Archivo a usar como base: /_template.html
-
-  Para construir esta calculadora:
-  1. Copia el contenido de /_template.html aquí.
-  2. Reemplaza los marcadores:
-     {{TITULO}}            → Conversor UVT a pesos
-     {{CATEGORIA}}         → tributarias
-     {{CATEGORIA_NOMBRE}}  → Tributarias
-     {{SLUG}}              → conversor-uvt
-     {{SHARED_JS}}         → impuestos.js
-  3. Construye la calculadora dentro de <section class="calculator">
-  4. Llena el contenido teórico (qué es, cómo se calcula, ejemplo, FAQ).
-  5. Implementa la lógica en script.js (ya está al lado, también placeholder).
-  6. Cuando esté lista:
-     - cambia su card en /tributarias/index.html (quita "Próximamente")
-     - agrega la URL al sitemap.xml
-     - agrégala al array TOOLS en /assets/js/search.js
--->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Conversor UVT a pesos — En construcción — Wapps</title>
-  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1B4965">
+
+  <title>Conversor UVT a pesos 2026 — Calculadora DIAN — Wapps</title>
+  <meta name="description" content="Convierte UVT a pesos colombianos al instante. Valor UVT 2026: $52.374. Incluye conversión inversa y tabla de referencia rápida. Gratis.">
+  <meta name="keywords" content="UVT 2026, cuánto vale la UVT, conversor UVT pesos, calculadora UVT, DIAN UVT">
+
+  <meta property="og:title" content="Conversor UVT a pesos 2026 — Wapps">
+  <meta property="og:description" content="UVT 2026: $52.374. Convierte UVT a pesos y viceversa al instante.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:url" content="https://wapps.co/tributarias/conversor-uvt/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Conversor UVT a pesos — Wapps">
+
+  <link rel="canonical" href="https://wapps.co/tributarias/conversor-uvt/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap">
+
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+  <link rel="stylesheet" href="/tributarias/_shared/styles.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Conversor UVT a pesos",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://wapps.co/tributarias/conversor-uvt/",
+    "description": "Convierte UVT a pesos colombianos y viceversa. Valor UVT 2026: $52.374.",
+    "inLanguage": "es-CO",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "COP" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto vale la UVT en 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La UVT (Unidad de Valor Tributario) para 2026 fue fijada en $52.374 por la DIAN mediante la Resolución 000238 del 15 de diciembre de 2025. Este valor se aplica a partir del 1 de enero de 2026."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo se convierte UVT a pesos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Multiplicas el número de UVT por el valor oficial de la UVT del año correspondiente. Por ejemplo, 100 UVT en 2026 equivalen a 100 × $52.374 = $5.237.400."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Por qué la DIAN usa UVT en vez de pesos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La UVT permite que los topes, sanciones y tarifas tributarias se ajusten automáticamente a la inflación cada año, sin necesidad de modificar leyes. Al estar expresadas en UVT, las normas tributarias siguen siendo equitativas con el tiempo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo se calcula el valor anual de la UVT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cada año, la DIAN ajusta el valor de la UVT con base en la variación del IPC (Índice de Precios al Consumidor) para ingresos medios entre el 1 de octubre del año anterior y el 1 de octubre del año en curso, según el artículo 868 del Estatuto Tributario."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
+<body class="tool-page">
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="logo">wapps<span class="logo-dot">.</span></a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="/tributarias/">Volver a Tributarias</a>
+      </nav>
     </div>
   </header>
-  <main style="min-height: 60vh; display: flex; align-items: center;">
-    <div class="container" style="text-align: center; max-width: 540px; margin: 0 auto;">
-      <span class="tag">Tributarias</span>
-      <h1 style="margin-top: 1rem;">Conversor UVT a pesos</h1>
-      <p style="color: var(--color-text-muted); margin-top: 1rem;">Esta calculadora está en construcción. Estamos puliendo las fórmulas y el contenido explicativo. Vuelve pronto.</p>
-      <div style="margin-top: 2rem;">
-        <a href="/tributarias/" class="btn btn-secondary">Ver otras herramientas de Tributarias</a>
+
+  <main id="main">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Migas de pan">
+        <a href="/">Inicio</a><span class="breadcrumb-sep">›</span>
+        <a href="/tributarias/">Tributarias</a><span class="breadcrumb-sep">›</span>
+        <span>Conversor UVT</span>
+      </nav>
+
+      <header class="tool-header">
+        <span class="tag">Tributaria</span>
+        <h1>Conversor UVT a pesos</h1>
+        <p class="tool-subtitle">Convierte UVT a pesos colombianos o viceversa. Útil para entender topes, sanciones, retenciones y demás cifras tributarias que la DIAN expresa en Unidades de Valor Tributario.</p>
+        <p class="tool-updated">Valor UVT 2026: <strong id="uvt-vigente">$52.374</strong> · Fuente: Resolución DIAN 000238 de 2025</p>
+      </header>
+
+      <!-- ============ CALCULADORA ============ -->
+      <section class="calculator uvt-calc" aria-label="Conversor UVT">
+
+        <div class="mode-switch" role="tablist" aria-label="Dirección de conversión">
+          <button type="button" class="mode-btn active" data-mode="uvt-pesos" role="tab" aria-selected="true">
+            UVT → Pesos
+          </button>
+          <button type="button" class="mode-btn" data-mode="pesos-uvt" role="tab" aria-selected="false">
+            Pesos → UVT
+          </button>
+        </div>
+
+        <!-- Selector de año -->
+        <div class="calc-field year-selector">
+          <label for="anio">Año a aplicar</label>
+          <select id="anio" class="calc-input year-select"></select>
+          <p class="hint" id="anio-hint">Por defecto se usa el año vigente.</p>
+        </div>
+
+        <!-- Input principal -->
+        <div class="calc-field">
+          <label for="valor-input" id="label-input">Cantidad en UVT</label>
+          <div class="input-wrapper">
+            <input type="text" inputmode="decimal" id="valor-input" class="r3-input" placeholder="100" autocomplete="off">
+            <span class="input-unit" id="input-unit">UVT</span>
+          </div>
+        </div>
+
+        <!-- Resultado -->
+        <div class="result-box">
+          <div class="result-label" id="result-label">Equivalente en pesos</div>
+          <div class="result-value" id="resultado" aria-live="polite">—</div>
+          <div class="result-formula" id="result-formula"></div>
+        </div>
+      </section>
+
+      <div class="tool-actions">
+        <button class="btn btn-secondary" id="share-whatsapp" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.5 14.4l-2.5-1.2c-.3-.1-.6-.1-.9.1l-1.1 1c-.2.2-.5.2-.7.1-.9-.5-1.9-1.4-2.5-2.3-.2-.2-.1-.5.1-.7l.7-.9c.2-.3.3-.6.1-.9L9.5 7.1c-.2-.5-.8-.7-1.2-.5l-1.1.5c-.5.2-.8.7-.8 1.2.2 1.7 1 4 3.5 6.5 2.5 2.5 4.8 3.3 6.5 3.5.5 0 1-.3 1.2-.8l.5-1.1c.2-.4 0-1-.5-1.2zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.4c1.5.9 3.2 1.4 5 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+          </svg>
+          Compartir por WhatsApp
+        </button>
+        <button class="btn btn-secondary" id="share-copy" type="button">
+          <span class="btn-default">Copiar resultado</span>
+          <span class="btn-success" hidden>✓ Copiado</span>
+        </button>
+        <button class="btn btn-secondary" onclick="window.print()" type="button">Imprimir</button>
       </div>
+
+      <!-- TABLA DE REFERENCIAS RÁPIDAS -->
+      <section class="tool-section">
+        <h2>Referencia rápida — UVT 2026</h2>
+        <p>Conversiones de los valores más consultados (calculadas con UVT 2026 = $52.374):</p>
+
+        <div class="ref-table-wrapper">
+          <table class="ref-table">
+            <thead>
+              <tr><th>UVT</th><th>Pesos</th><th>Concepto típico</th></tr>
+            </thead>
+            <tbody id="ref-table-body">
+              <!-- Se llena por JS para que siempre refleje el año vigente -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- HISTÓRICO -->
+      <section class="tool-section">
+        <h2>Histórico del valor de la UVT</h2>
+        <p>La UVT se ajusta anualmente con base en la variación del IPC. Estos son los valores recientes:</p>
+
+        <div class="ref-table-wrapper">
+          <table class="ref-table">
+            <thead>
+              <tr><th>Año</th><th>Valor UVT</th><th>Variación</th></tr>
+            </thead>
+            <tbody id="historic-body">
+              <!-- Se llena por JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- CONTENIDO EDUCATIVO -->
+
+      <section class="tool-section">
+        <h2>¿Qué es la UVT?</h2>
+        <p>La UVT (Unidad de Valor Tributario) es una medida creada por la DIAN para expresar topes, sanciones, tarifas y demás cifras tributarias sin que pierdan vigencia con el tiempo. En lugar de decir "una multa es de $500.000", la norma dice "una multa es de 10 UVT", y cada año la cifra en pesos se actualiza automáticamente con la inflación.</p>
+        <p>Es un mecanismo elegante: la ley sigue siendo la misma, pero el valor real se mantiene constante. Para 2026, una UVT vale $52.374. Para 2025, valía $49.799. Para 2027 valdrá lo que la DIAN determine según la variación del IPC.</p>
+      </section>
+
+      <section class="tool-section">
+        <h2>¿Dónde encuentras la UVT en tu día a día?</h2>
+        <ul class="usage-list">
+          <li><strong>Sanciones por extemporaneidad:</strong> el mínimo por presentar tarde una declaración es de 10 UVT.</li>
+          <li><strong>Topes para no responsable de IVA:</strong> ingresos brutos superiores a 3.500 UVT en el año anterior te obligan a inscribirte como responsable.</li>
+          <li><strong>Topes para declarar renta como persona natural:</strong> patrimonio, ingresos, consumos con tarjeta crédito y consignaciones se miden en UVT.</li>
+          <li><strong>Retención en la fuente:</strong> los topes mínimos para aplicar retención están expresados en UVT (ej: 27 UVT en compras, 4 UVT en servicios).</li>
+          <li><strong>Tarifas de impuesto al patrimonio:</strong> los rangos de aplicación se expresan en UVT.</li>
+          <li><strong>Sanciones por información tributaria:</strong> errores en medios magnéticos, no inscripción en el RUT, etc.</li>
+        </ul>
+      </section>
+
+      <section class="tool-section">
+        <h2>Cómo se calcula la UVT cada año</h2>
+        <p>Según el <strong>artículo 868 del Estatuto Tributario</strong>, el valor de la UVT del año siguiente se obtiene aplicando al valor vigente la variación del IPC para ingresos medios (certificado por el DANE) entre el 1 de octubre del año anterior y el 1 de octubre del año en curso.</p>
+        <pre class="formula">UVT año siguiente = UVT año actual × (1 + variación IPC)</pre>
+        <p>La UVT 2026 ($52.374) salió de incrementar la UVT 2025 ($49.799) en 5,17%, que fue la variación del IPC del período. La DIAN publica el valor mediante resolución antes del 1° de enero de cada año.</p>
+      </section>
+
+      <section class="tool-section faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Preguntas frecuentes</h2>
+
+        <details>
+          <summary>¿Cuánto vale la UVT en 2026?</summary>
+          <p>Para 2026, la UVT vale <strong>$52.374</strong>. Fue fijada por la DIAN mediante la Resolución 000238 del 15 de diciembre de 2025, y aplica a partir del 1° de enero de 2026.</p>
+        </details>
+
+        <details>
+          <summary>¿Cómo se convierte UVT a pesos?</summary>
+          <p>Multiplicas el número de UVT por el valor oficial. Ejemplo: 50 UVT en 2026 equivalen a 50 × $52.374 = $2.618.700.</p>
+        </details>
+
+        <details>
+          <summary>¿Por qué la DIAN no usa pesos directamente?</summary>
+          <p>Porque obligaría a actualizar las leyes cada año para ajustar las cifras a la inflación. Usar UVT permite que la norma se mantenga estable mientras el valor monetario se actualiza automáticamente.</p>
+        </details>
+
+        <details>
+          <summary>¿La UVT se usa también para ICA o impuestos municipales?</summary>
+          <p>La UVT es de uso nacional (DIAN). Los municipios pueden tener su propio sistema de unidades, como la UVB (Unidad de Valor Básico). Para ICA en particular, depende del estatuto tributario de cada municipio.</p>
+        </details>
+
+        <details>
+          <summary>¿Cómo redondeo cuando convierto UVT a pesos?</summary>
+          <p>Para cifras informativas, multiplica directamente y queda con decimales. Para usos oficiales (sanciones, retenciones), el artículo 868-1 del ET tiene reglas específicas de aproximación a miles o cientos según el caso. La calculadora muestra el valor exacto; el redondeo oficial depende del concepto.</p>
+        </details>
+      </section>
+
+      <aside class="official-notice">
+        <strong>Importante:</strong> el valor de la UVT lo fija la DIAN cada año por resolución. Esta calculadora aplica el valor vigente para 2026 ($52.374) y mantiene los años anteriores como referencia histórica. Para decisiones declarativas, valida siempre con la <a href="https://www.dian.gov.co/" target="_blank" rel="noopener nofollow">DIAN</a> o con tu contador.
+      </aside>
+
+      <section class="tool-section">
+        <h2>Herramientas relacionadas</h2>
+        <div class="related">
+          <a href="/tributarias/calculadora-iva/" class="tool-card">
+            <span class="tool-tag">Tributaria</span>
+            <h3>Calculadora de IVA</h3>
+            <p>Suma el IVA o sácalo de un precio que ya lo incluye.</p>
+          </a>
+          <a href="/tributarias/retencion-fuente/" class="tool-card">
+            <span class="tool-tag">Tributaria</span>
+            <h3>Retención en la fuente</h3>
+            <p>Calcula la retención por concepto (usa UVT).</p>
+            <span class="tool-soon">Próximamente</span>
+          </a>
+          <a href="/tributarias/sancion-extemporaneidad/" class="tool-card">
+            <span class="tool-tag">Tributaria</span>
+            <h3>Sanción por extemporaneidad</h3>
+            <p>Cuánto pagar por presentar tarde una declaración.</p>
+            <span class="tool-soon">Próximamente</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="feedback" aria-label="Tu opinión">
+        <p class="feedback-prompt">¿Esta calculadora te sirvió?</p>
+        <div class="feedback-buttons">
+          <button class="btn btn-secondary" data-feedback="up" type="button">👍 Sí, gracias</button>
+          <button class="btn btn-secondary" data-feedback="down" type="button">👎 No del todo</button>
+        </div>
+        <p class="feedback-thanks" hidden>¡Gracias por avisarnos!</p>
+      </section>
+
     </div>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-meta">
+      <p>© <span id="year">2026</span> Wapps. Hecho con cuidado en Colombia. <a href="/" style="color: var(--color-accent);">Ver todas las herramientas</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/utils/format.js" defer></script>
+  <script src="/assets/js/utils/validate.js" defer></script>
+  <script src="/assets/js/utils/share.js" defer></script>
+  <script src="/assets/js/utils/analytics.js" defer></script>
+  <script src="/tributarias/_shared/tarifas.js" defer></script>
+  <script src="/tributarias/_shared/impuestos.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
