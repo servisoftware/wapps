@@ -1,0 +1,120 @@
+/* ============================================
+   Wapps · matematicas/calculadora-porcentaje/styles.css
+   ============================================ */
+
+/* ---------- Grid de 4 modos ---------- */
+.mode-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+  background: var(--color-bg-muted);
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 700px) {
+  .mode-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.mode-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  font-family: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: calc(var(--radius-md) - 4px);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--t-base);
+  text-align: center;
+}
+.mode-btn:hover { color: var(--color-text); }
+.mode-btn.active {
+  background: var(--color-bg-elevated);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.mode-title {
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+.mode-sub {
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
+}
+
+.mode-btn.active .mode-sub {
+  color: var(--color-primary);
+}
+
+@media (max-width: 480px) {
+  .mode-title { font-size: 0.75rem; }
+  .mode-sub { font-size: 0.82rem; }
+}
+
+.mode-hint {
+  background: rgba(27, 73, 101, 0.05);
+  border-left: 3px solid var(--color-primary);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  color: var(--color-text);
+  margin: 0 0 var(--space-5);
+  line-height: 1.5;
+}
+
+/* ---------- Reutilizamos casi todo de regla de tres
+   La estructura .proposition, .r3-field, .r3-input, .r3-result,
+   .procedure ya está definida en _shared/styles.css cuando
+   se cargue. Solo agregamos lo nuevo: ---------- */
+
+/* Tarjetas explicando los 4 modos */
+.modes-explainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+@media (min-width: 700px) {
+  .modes-explainer { grid-template-columns: repeat(2, 1fr); }
+}
+
+.mode-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.mode-card h3 {
+  font-size: 1.15rem !important;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2) !important;
+}
+
+.mode-card p {
+  font-size: 0.95rem;
+  margin-bottom: var(--space-2);
+}
+
+.mode-example {
+  background: var(--color-bg-muted);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  margin: var(--space-2) 0 !important;
+}
+
+.mode-formula {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--color-accent-dark);
+  margin: 0 !important;
+}

@@ -1,53 +1,329 @@
-<!--
-  ════════════════════════════════════════════════════════════
-  PLACEHOLDER · Calculadora de porcentaje
-  ════════════════════════════════════════════════════════════
-  Categoría: Matemáticas
-  URL final: /wapps.co/matematicas/calculadora-porcentaje/
-  Archivo a usar como base: /_template.html
-
-  Para construir esta calculadora:
-  1. Copia el contenido de /_template.html aquí.
-  2. Reemplaza los marcadores:
-     {{TITULO}}            → Calculadora de porcentaje
-     {{CATEGORIA}}         → matematicas
-     {{CATEGORIA_NOMBRE}}  → Matemáticas
-     {{SLUG}}              → calculadora-porcentaje
-     {{SHARED_JS}}         → matematicas.js
-  3. Construye la calculadora dentro de <section class="calculator">
-  4. Llena el contenido teórico (qué es, cómo se calcula, ejemplo, FAQ).
-  5. Implementa la lógica en script.js (ya está al lado, también placeholder).
-  6. Cuando esté lista:
-     - cambia su card en /matematicas/index.html (quita "Próximamente")
-     - agrega la URL al sitemap.xml
-     - agrégala al array TOOLS en /assets/js/search.js
--->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Calculadora de porcentaje — En construcción — Wapps</title>
-  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1B4965">
+
+  <title>Calculadora de porcentaje — Cómo sacar el porcentaje — Wapps</title>
+  <meta name="description" content="Calcula porcentajes en segundos: cuánto es un % de un valor, qué porcentaje representa un número, aumentos y disminuciones porcentuales. Gratis, con el procedimiento paso a paso.">
+  <meta name="keywords" content="calculadora de porcentaje, cómo sacar porcentaje, cuánto es el porcentaje, aumento porcentual, disminución porcentual">
+
+  <meta property="og:title" content="Calculadora de porcentaje — Wapps">
+  <meta property="og:description" content="Calcula porcentajes al instante con el procedimiento paso a paso.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:url" content="https://wapps.co/matematicas/calculadora-porcentaje/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calculadora de porcentaje — Wapps">
+
+  <link rel="canonical" href="https://wapps.co/matematicas/calculadora-porcentaje/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap">
+
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+  <link rel="stylesheet" href="/matematicas/_shared/styles.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de porcentaje",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web",
+    "url": "https://wapps.co/matematicas/calculadora-porcentaje/",
+    "description": "Calcula porcentajes: cuánto es un % de un valor, qué porcentaje representa un número, aumentos y disminuciones.",
+    "inLanguage": "es-CO",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "COP" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cómo se calcula el porcentaje de una cantidad?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Multiplicas la cantidad por el porcentaje y divides entre 100. Por ejemplo, el 15% de 200.000 es: 200.000 × 15 / 100 = 30.000."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo saco qué porcentaje es un número de otro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Divides el primer número entre el total y multiplicas por 100. Por ejemplo, 30 de 200 representa: 30 / 200 × 100 = 15%."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo aumentar un valor en un porcentaje?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Multiplicas el valor por (1 + porcentaje/100). Por ejemplo, aumentar 500.000 en 10%: 500.000 × 1,10 = 550.000."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuál es la diferencia entre porcentaje y puntos porcentuales?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Un porcentaje es una proporción de un total (15 sobre 100). Los puntos porcentuales miden la diferencia entre dos porcentajes. Si una tasa pasa de 10% a 12%, subió 2 puntos porcentuales (no 2%): porcentualmente subió un 20%."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
+<body class="tool-page">
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="logo">wapps<span class="logo-dot">.</span></a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="/matematicas/">Volver a Matemáticas</a>
+      </nav>
     </div>
   </header>
-  <main style="min-height: 60vh; display: flex; align-items: center;">
-    <div class="container" style="text-align: center; max-width: 540px; margin: 0 auto;">
-      <span class="tag">Matemáticas</span>
-      <h1 style="margin-top: 1rem;">Calculadora de porcentaje</h1>
-      <p style="color: var(--color-text-muted); margin-top: 1rem;">Esta calculadora está en construcción. Estamos puliendo las fórmulas y el contenido explicativo. Vuelve pronto.</p>
-      <div style="margin-top: 2rem;">
-        <a href="/matematicas/" class="btn btn-secondary">Ver otras herramientas de Matemáticas</a>
+
+  <main id="main">
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="Migas de pan">
+        <a href="/">Inicio</a><span class="breadcrumb-sep">›</span>
+        <a href="/matematicas/">Matemáticas</a><span class="breadcrumb-sep">›</span>
+        <span>Calculadora de porcentaje</span>
+      </nav>
+
+      <header class="tool-header">
+        <span class="tag">Matemática</span>
+        <h1>Calculadora de porcentaje</h1>
+        <p class="tool-subtitle">Cuatro cálculos en una sola herramienta: cuánto es un porcentaje de algo, qué porcentaje representa un número, aumentos y disminuciones. Con el procedimiento paso a paso.</p>
+      </header>
+
+      <!-- ============ CALCULADORA ============ -->
+      <section class="calculator pct-calc" aria-label="Calculadora de porcentaje">
+
+        <!-- Selector de modo (4 botones) -->
+        <div class="mode-grid" role="tablist" aria-label="Tipo de cálculo">
+          <button type="button" class="mode-btn active" data-mode="parte" role="tab" aria-selected="true">
+            <span class="mode-title">¿Cuánto es</span>
+            <span class="mode-sub">X% de Y?</span>
+          </button>
+          <button type="button" class="mode-btn" data-mode="cual" role="tab" aria-selected="false">
+            <span class="mode-title">¿Qué % es</span>
+            <span class="mode-sub">X de Y?</span>
+          </button>
+          <button type="button" class="mode-btn" data-mode="aumento" role="tab" aria-selected="false">
+            <span class="mode-title">Aumentar</span>
+            <span class="mode-sub">Y en X%</span>
+          </button>
+          <button type="button" class="mode-btn" data-mode="disminucion" role="tab" aria-selected="false">
+            <span class="mode-title">Disminuir</span>
+            <span class="mode-sub">Y en X%</span>
+          </button>
+        </div>
+
+        <p class="mode-hint" id="mode-hint">
+          <strong>Ejemplo:</strong> ¿Cuánto es el 15% de 200.000? Ingresa 15 como porcentaje y 200.000 como valor.
+        </p>
+
+        <!-- Inputs -->
+        <div class="proposition">
+          <div class="proposition-row" id="row-1">
+            <div class="r3-field">
+              <label for="valor-1" id="label-1">Porcentaje (%)</label>
+              <input type="text" inputmode="decimal" id="valor-1" class="r3-input" placeholder="15" autocomplete="off">
+            </div>
+            <span class="proposition-arrow" aria-hidden="true">×</span>
+            <div class="r3-field">
+              <label for="valor-2" id="label-2">Valor</label>
+              <input type="text" inputmode="decimal" id="valor-2" class="r3-input" placeholder="200000" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="proposition-row">
+            <div class="r3-field r3-field-result" style="grid-column: 1 / -1;">
+              <label id="label-result">Resultado</label>
+              <div class="r3-result" id="resultado" aria-live="polite">—</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="procedure" id="procedure" hidden>
+          <p class="procedure-title">Cómo se calculó:</p>
+          <p class="procedure-formula" id="procedure-formula"></p>
+          <p class="procedure-steps" id="procedure-steps"></p>
+        </div>
+
+        <p class="hint">Puedes usar puntos como separador de miles y coma para decimales. Ej: 1.500,50</p>
+      </section>
+
+      <div class="tool-actions">
+        <button class="btn btn-secondary" id="share-whatsapp" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.5 14.4l-2.5-1.2c-.3-.1-.6-.1-.9.1l-1.1 1c-.2.2-.5.2-.7.1-.9-.5-1.9-1.4-2.5-2.3-.2-.2-.1-.5.1-.7l.7-.9c.2-.3.3-.6.1-.9L9.5 7.1c-.2-.5-.8-.7-1.2-.5l-1.1.5c-.5.2-.8.7-.8 1.2.2 1.7 1 4 3.5 6.5 2.5 2.5 4.8 3.3 6.5 3.5.5 0 1-.3 1.2-.8l.5-1.1c.2-.4 0-1-.5-1.2zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.4c1.5.9 3.2 1.4 5 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+          </svg>
+          Compartir por WhatsApp
+        </button>
+        <button class="btn btn-secondary" id="share-copy" type="button">
+          <span class="btn-default">Copiar resultado</span>
+          <span class="btn-success" hidden>✓ Copiado</span>
+        </button>
+        <button class="btn btn-secondary" onclick="window.print()" type="button">Imprimir</button>
       </div>
+
+      <!-- CONTENIDO EDUCATIVO -->
+
+      <section class="tool-section">
+        <h2>¿Qué es un porcentaje?</h2>
+        <p>Un porcentaje es una forma de expresar una cantidad como parte de un total de 100. La palabra viene del latín "per centum" — "por cada cien". Cuando decimos "el 15% de algo", estamos diciendo "15 partes de cada 100".</p>
+        <p>Es una herramienta de comparación universal: te permite hablar de proporciones sin importar el tamaño absoluto. Un descuento del 10% se entiende igual si compras una camisa o una casa, aunque el ahorro en pesos sea muy distinto.</p>
+      </section>
+
+      <section class="tool-section">
+        <h2>Los cuatro cálculos que resuelve esta herramienta</h2>
+
+        <div class="modes-explainer">
+          <article class="mode-card">
+            <h3>¿Cuánto es X% de Y?</h3>
+            <p>El cálculo más común. Sabes el porcentaje y el total, quieres saber cuánto representa esa fracción.</p>
+            <p class="mode-example"><strong>Ejemplo:</strong> ¿Cuánto es el 15% de 200.000? → 30.000</p>
+            <p class="mode-formula">Fórmula: (Y × X) / 100</p>
+          </article>
+
+          <article class="mode-card">
+            <h3>¿Qué % es X de Y?</h3>
+            <p>Sabes dos cifras y quieres saber qué proporción es una de la otra.</p>
+            <p class="mode-example"><strong>Ejemplo:</strong> 30 de 200 representa el 15%</p>
+            <p class="mode-formula">Fórmula: (X / Y) × 100</p>
+          </article>
+
+          <article class="mode-card">
+            <h3>Aumentar Y en X%</h3>
+            <p>Suma el porcentaje al valor original. Útil para incrementos de precio, ajustes por inflación, recargos.</p>
+            <p class="mode-example"><strong>Ejemplo:</strong> 500.000 aumentado en 10% → 550.000</p>
+            <p class="mode-formula">Fórmula: Y × (1 + X/100)</p>
+          </article>
+
+          <article class="mode-card">
+            <h3>Disminuir Y en X%</h3>
+            <p>Resta el porcentaje al valor original. Útil para descuentos, rebajas, deducciones.</p>
+            <p class="mode-example"><strong>Ejemplo:</strong> 500.000 con 10% de descuento → 450.000</p>
+            <p class="mode-formula">Fórmula: Y × (1 − X/100)</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="tool-section">
+        <h2>El error común con los aumentos y disminuciones</h2>
+        <p>Si subes un precio 10% y después le aplicas 10% de descuento, <strong>no vuelves al precio original</strong>. Vamos al ejemplo:</p>
+        <ol class="example-steps">
+          <li>Precio inicial: $100.000</li>
+          <li>Aumentas 10%: $100.000 × 1,10 = <strong>$110.000</strong></li>
+          <li>Descuentas 10% sobre $110.000: $110.000 × 0,90 = <strong>$99.000</strong></li>
+          <li>Resultado final: <strong>$99.000</strong>, no $100.000.</li>
+        </ol>
+        <p>El 10% del segundo cálculo se aplica sobre un total mayor que el original. Por eso al combinar aumentos y descuentos del mismo porcentaje siempre terminas un poco abajo del valor inicial.</p>
+      </section>
+
+      <section class="tool-section">
+        <h2>¿Para qué te sirve en tu negocio?</h2>
+        <ul class="usage-list">
+          <li><strong>Descuentos y promociones:</strong> calcular el precio final al aplicar un 20% off.</li>
+          <li><strong>Márgenes:</strong> determinar qué porcentaje de tu venta es ganancia.</li>
+          <li><strong>Comisiones:</strong> calcular cuánto se lleva un vendedor sobre cada venta.</li>
+          <li><strong>Aumentos de precio:</strong> aplicar un ajuste por inflación o costo de inventario.</li>
+          <li><strong>Crecimiento:</strong> medir cuánto crecieron tus ventas respecto al mes anterior.</li>
+          <li><strong>Repartos:</strong> dividir ganancias entre socios según porcentaje de participación.</li>
+          <li><strong>Impuestos:</strong> calcular cuánto representan IVA, retención u otros tributos sobre una operación.</li>
+        </ul>
+      </section>
+
+      <section class="tool-section faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Preguntas frecuentes</h2>
+
+        <details>
+          <summary>¿Cómo calculo qué porcentaje de aumento o disminución hubo entre dos valores?</summary>
+          <p>Resta el valor inicial al final, divide entre el inicial, y multiplica por 100. Ejemplo: pasaste de vender $5M a $6M; el aumento es (6 − 5) / 5 × 100 = 20%. Si quieres calcularlo directamente, usa el modo "¿Qué % es X de Y?" con X = diferencia, Y = valor inicial.</p>
+        </details>
+
+        <details>
+          <summary>¿Qué diferencia hay entre porcentaje y puntos porcentuales?</summary>
+          <p><strong>Porcentaje</strong> es una proporción sobre un total (5 sobre 100 = 5%). <strong>Puntos porcentuales</strong> es la diferencia aritmética entre dos porcentajes. Si una tasa pasa de 10% a 12%, subió 2 puntos porcentuales, pero porcentualmente subió un 20% (2/10 × 100).</p>
+        </details>
+
+        <details>
+          <summary>¿Puedo usar valores decimales?</summary>
+          <p>Sí. Acepta números con coma para decimales y puntos como separadores de miles, al estilo colombiano. Ejemplo válido: 1.500,75</p>
+        </details>
+
+        <details>
+          <summary>¿Y si el porcentaje es mayor a 100%?</summary>
+          <p>Funciona normal. El 150% de 200 es 300 (más que el total original, lo cual tiene sentido cuando hablas de duplicar y agregar la mitad). Lo verás también en cálculos de crecimiento: una empresa puede crecer "150% año a año", por ejemplo.</p>
+        </details>
+      </section>
+
+      <section class="tool-section">
+        <h2>Herramientas relacionadas</h2>
+        <div class="related">
+          <a href="/matematicas/regla-de-tres-simple/" class="tool-card">
+            <span class="tool-tag">Matemática</span>
+            <h3>Regla de tres simple</h3>
+            <p>Resuelve proporciones directas e inversas paso a paso.</p>
+          </a>
+          <a href="/matematicas/descuentos-sucesivos/" class="tool-card">
+            <span class="tool-tag">Matemática</span>
+            <h3>Descuentos sucesivos</h3>
+            <p>Calcula el efecto de aplicar varios descuentos en cadena.</p>
+            <span class="tool-soon">Próximamente</span>
+          </a>
+          <a href="/financieras/margen-utilidad/" class="tool-card">
+            <span class="tool-tag">Financiera</span>
+            <h3>Margen de utilidad</h3>
+            <p>Qué porcentaje de tu venta es ganancia real.</p>
+            <span class="tool-soon">Próximamente</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="feedback" aria-label="Tu opinión">
+        <p class="feedback-prompt">¿Esta calculadora te sirvió?</p>
+        <div class="feedback-buttons">
+          <button class="btn btn-secondary" data-feedback="up" type="button">👍 Sí, gracias</button>
+          <button class="btn btn-secondary" data-feedback="down" type="button">👎 No del todo</button>
+        </div>
+        <p class="feedback-thanks" hidden>¡Gracias por avisarnos!</p>
+      </section>
+
     </div>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-meta">
+      <p>© <span id="year">2026</span> Wapps. Hecho con cuidado en Colombia. <a href="/" style="color: var(--color-accent);">Ver todas las herramientas</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/utils/format.js" defer></script>
+  <script src="/assets/js/utils/validate.js" defer></script>
+  <script src="/assets/js/utils/share.js" defer></script>
+  <script src="/assets/js/utils/analytics.js" defer></script>
+  <script src="/matematicas/_shared/matematicas.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

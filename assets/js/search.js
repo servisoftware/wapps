@@ -33,7 +33,7 @@
 
     // Matemáticas
     { name: 'Regla de tres simple', tag: 'Matemática', keywords: 'regla tres simple proporcion directa inversa', url: '/matematicas/regla-de-tres-simple/', available: true },
-    { name: 'Porcentajes', tag: 'Matemática', keywords: 'porcentaje porciento sacar', url: '/matematicas/calculadora-porcentaje/', available: false },
+    { name: 'Porcentajes', tag: 'Matemática', keywords: 'porcentaje porciento sacar', url: '/matematicas/calculadora-porcentaje/', available: true },
     { name: 'Promedio', tag: 'Matemática', keywords: 'promedio media aritmetica', url: '/matematicas/promedio/', available: false },
 
     // Técnicas
