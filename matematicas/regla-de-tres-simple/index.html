@@ -1,53 +1,354 @@
-<!--
-  ════════════════════════════════════════════════════════════
-  PLACEHOLDER · Regla de tres simple
-  ════════════════════════════════════════════════════════════
-  Categoría: Matemáticas
-  URL final: /wapps.co/matematicas/regla-de-tres-simple/
-  Archivo a usar como base: /_template.html
-
-  Para construir esta calculadora:
-  1. Copia el contenido de /_template.html aquí.
-  2. Reemplaza los marcadores:
-     {{TITULO}}            → Regla de tres simple
-     {{CATEGORIA}}         → matematicas
-     {{CATEGORIA_NOMBRE}}  → Matemáticas
-     {{SLUG}}              → regla-de-tres-simple
-     {{SHARED_JS}}         → matematicas.js
-  3. Construye la calculadora dentro de <section class="calculator">
-  4. Llena el contenido teórico (qué es, cómo se calcula, ejemplo, FAQ).
-  5. Implementa la lógica en script.js (ya está al lado, también placeholder).
-  6. Cuando esté lista:
-     - cambia su card en /matematicas/index.html (quita "Próximamente")
-     - agrega la URL al sitemap.xml
-     - agrégala al array TOOLS en /assets/js/search.js
--->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Regla de tres simple — En construcción — Wapps</title>
-  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1B4965">
+
+  <title>Calculadora de regla de tres simple — Directa e inversa — Wapps</title>
+  <meta name="description" content="Resuelve regla de tres simple directa o inversa en segundos. Te mostramos el cálculo paso a paso para que entiendas el procedimiento. Gratis, sin registro.">
+  <meta name="keywords" content="regla de tres simple, regla de tres directa, regla de tres inversa, calculadora regla de tres, proporciones">
+
+  <meta property="og:title" content="Calculadora de regla de tres simple — Wapps">
+  <meta property="og:description" content="Resuelve regla de tres directa o inversa al instante con el cálculo paso a paso.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:url" content="https://wapps.co/matematicas/regla-de-tres-simple/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calculadora de regla de tres simple — Wapps">
+
+  <link rel="canonical" href="https://wapps.co/matematicas/regla-de-tres-simple/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap">
+
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+  <link rel="stylesheet" href="/matematicas/_shared/styles.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de regla de tres simple",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web",
+    "url": "https://wapps.co/matematicas/regla-de-tres-simple/",
+    "description": "Resuelve regla de tres simple directa e inversa con el cálculo paso a paso.",
+    "inLanguage": "es-CO",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "COP" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuándo uso regla de tres directa y cuándo inversa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usa regla de tres directa cuando al aumentar una cantidad, la otra también aumenta proporcionalmente. Por ejemplo: si 1 kilo cuesta 3.000 pesos, 5 kilos cuestan más. Usa regla de tres inversa cuando al aumentar una cantidad, la otra disminuye. Por ejemplo: si 4 obreros tardan 6 días en una obra, 8 obreros tardarán menos días."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuál es la fórmula de la regla de tres simple?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En la regla de tres directa la fórmula es X = (B × C) / A, donde A y B son los valores conocidos relacionados, y C es el nuevo valor del que quieres encontrar su equivalente X. En la regla de tres inversa la fórmula es X = (A × B) / C."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Por qué se llama regla de tres?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Se llama regla de tres porque solo necesitas tres valores conocidos para encontrar el cuarto. Es uno de los procedimientos matemáticos más usados en la vida cotidiana y en los negocios."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Para qué sirve la regla de tres en un negocio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sirve para calcular precios proporcionales, ajustar recetas o producciones, repartir costos entre socios, escalar presupuestos, convertir medidas, calcular tiempos de trabajo según el número de personas, y muchas otras situaciones donde una cantidad depende de otra."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
+<body class="tool-page">
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="logo">wapps<span class="logo-dot">.</span></a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="/matematicas/">Volver a Matemáticas</a>
+      </nav>
     </div>
   </header>
-  <main style="min-height: 60vh; display: flex; align-items: center;">
-    <div class="container" style="text-align: center; max-width: 540px; margin: 0 auto;">
-      <span class="tag">Matemáticas</span>
-      <h1 style="margin-top: 1rem;">Regla de tres simple</h1>
-      <p style="color: var(--color-text-muted); margin-top: 1rem;">Esta calculadora está en construcción. Estamos puliendo las fórmulas y el contenido explicativo. Vuelve pronto.</p>
-      <div style="margin-top: 2rem;">
-        <a href="/matematicas/" class="btn btn-secondary">Ver otras herramientas de Matemáticas</a>
+
+  <main id="main">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Migas de pan">
+        <a href="/">Inicio</a><span class="breadcrumb-sep">›</span>
+        <a href="/matematicas/">Matemáticas</a><span class="breadcrumb-sep">›</span>
+        <span>Regla de tres simple</span>
+      </nav>
+
+      <!-- Header de la herramienta -->
+      <header class="tool-header">
+        <span class="tag">Matemática</span>
+        <h1>Regla de tres simple</h1>
+        <p class="tool-subtitle">Resuelve regla de tres directa o inversa al instante. Te mostramos el procedimiento paso a paso para que aprendas o recuerdes cómo se hace.</p>
+      </header>
+
+      <!-- ============ CALCULADORA ============ -->
+      <section class="calculator r3-calc" aria-label="Calculadora de regla de tres">
+
+        <!-- Selector de modo -->
+        <div class="mode-switch" role="tablist" aria-label="Tipo de regla de tres">
+          <button type="button" class="mode-btn active" data-mode="directa" role="tab" aria-selected="true">
+            Directa
+          </button>
+          <button type="button" class="mode-btn" data-mode="inversa" role="tab" aria-selected="false">
+            Inversa
+          </button>
+        </div>
+
+        <p class="mode-hint" id="mode-hint">
+          <strong>Directa:</strong> a mayor valor, mayor resultado. Ej: si 1 kilo cuesta $3.000, ¿cuánto cuestan 5 kilos?
+        </p>
+
+        <!-- Planteamiento visual -->
+        <div class="proposition">
+          <div class="proposition-row">
+            <div class="r3-field">
+              <label for="valor-a">Si</label>
+              <input type="text" inputmode="decimal" id="valor-a" class="r3-input" placeholder="1" autocomplete="off">
+            </div>
+            <span class="proposition-arrow" aria-hidden="true">→</span>
+            <div class="r3-field">
+              <label for="valor-b">equivale a</label>
+              <input type="text" inputmode="decimal" id="valor-b" class="r3-input" placeholder="3000" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="proposition-row">
+            <div class="r3-field">
+              <label for="valor-c">Entonces</label>
+              <input type="text" inputmode="decimal" id="valor-c" class="r3-input" placeholder="5" autocomplete="off">
+            </div>
+            <span class="proposition-arrow" aria-hidden="true">→</span>
+            <div class="r3-field r3-field-result">
+              <label>equivale a</label>
+              <div class="r3-result" id="resultado" aria-live="polite">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cálculo paso a paso -->
+        <div class="procedure" id="procedure" hidden>
+          <p class="procedure-title">Cómo se calculó:</p>
+          <p class="procedure-formula" id="procedure-formula"></p>
+          <p class="procedure-steps" id="procedure-steps"></p>
+        </div>
+
+        <p class="hint">Puedes usar puntos como separador de miles y coma para decimales. Ej: 1.500,50</p>
+      </section>
+
+      <!-- Acciones -->
+      <div class="tool-actions">
+        <button class="btn btn-secondary" id="share-whatsapp" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.5 14.4l-2.5-1.2c-.3-.1-.6-.1-.9.1l-1.1 1c-.2.2-.5.2-.7.1-.9-.5-1.9-1.4-2.5-2.3-.2-.2-.1-.5.1-.7l.7-.9c.2-.3.3-.6.1-.9L9.5 7.1c-.2-.5-.8-.7-1.2-.5l-1.1.5c-.5.2-.8.7-.8 1.2.2 1.7 1 4 3.5 6.5 2.5 2.5 4.8 3.3 6.5 3.5.5 0 1-.3 1.2-.8l.5-1.1c.2-.4 0-1-.5-1.2zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.4c1.5.9 3.2 1.4 5 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+          </svg>
+          Compartir por WhatsApp
+        </button>
+        <button class="btn btn-secondary" id="share-copy" type="button">
+          <span class="btn-default">Copiar resultado</span>
+          <span class="btn-success" hidden>✓ Copiado</span>
+        </button>
+        <button class="btn btn-secondary" onclick="window.print()" type="button">Imprimir</button>
       </div>
+
+      <!-- ============ CONTENIDO EDUCATIVO ============ -->
+
+      <section class="tool-section">
+        <h2>¿Qué es la regla de tres simple?</h2>
+        <p>La regla de tres es uno de los procedimientos matemáticos más útiles para la vida cotidiana y los negocios. Te permite encontrar un cuarto valor desconocido a partir de tres valores conocidos, siempre que entre ellos exista una relación de proporción.</p>
+        <p>Se llama "de tres" porque solo necesitas tres datos para encontrar el cuarto. Y se le dice "simple" cuando solo hay dos magnitudes relacionadas (precio y cantidad, por ejemplo), a diferencia de la regla de tres compuesta donde intervienen tres o más.</p>
+      </section>
+
+      <section class="tool-section">
+        <h2>Directa vs. inversa: ¿cuál usar?</h2>
+
+        <div class="comparison">
+          <article class="comparison-card">
+            <h3>Directa</h3>
+            <p class="comparison-rule">A mayor cantidad, mayor resultado.</p>
+            <p>Las dos magnitudes crecen juntas. Si una aumenta al doble, la otra también.</p>
+            <p class="comparison-example">
+              <strong>Ejemplo:</strong> Si 1 kilo de café cuesta $25.000, ¿cuánto cuestan 4 kilos?<br>
+              <em>Más kilos → más pesos. Es directa.</em>
+            </p>
+          </article>
+
+          <article class="comparison-card">
+            <h3>Inversa</h3>
+            <p class="comparison-rule">A mayor cantidad, menor resultado.</p>
+            <p>Las dos magnitudes se mueven en sentido contrario. Si una aumenta al doble, la otra se reduce a la mitad.</p>
+            <p class="comparison-example">
+              <strong>Ejemplo:</strong> Si 4 obreros terminan una obra en 6 días, ¿cuántos días tardarán 8 obreros?<br>
+              <em>Más obreros → menos días. Es inversa.</em>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="tool-section">
+        <h2>Cómo se calcula</h2>
+
+        <h3 style="margin-top: 1.5rem; font-size: 1.15rem;">Regla de tres directa</h3>
+        <p>Si <strong>A</strong> equivale a <strong>B</strong>, entonces <strong>C</strong> equivale a <strong>X</strong>. La fórmula es:</p>
+        <pre class="formula">X = (B × C) / A</pre>
+        <p>Multiplicamos en cruz los dos valores conocidos que están en diagonal (B y C), y dividimos por el valor que queda en línea con X (A).</p>
+
+        <h3 style="margin-top: 1.5rem; font-size: 1.15rem;">Regla de tres inversa</h3>
+        <p>Mismas variables, pero la relación es inversa, así que multiplicamos en línea recta y dividimos por el valor cruzado:</p>
+        <pre class="formula">X = (A × B) / C</pre>
+        <p>El truco mental: en la directa multiplicas en cruz; en la inversa multiplicas en línea.</p>
+      </section>
+
+      <section class="tool-section">
+        <h2>Ejemplo paso a paso (directa)</h2>
+        <p>Una sastrería usa 3 metros de tela para confeccionar 2 camisas. ¿Cuántos metros se necesitan para 15 camisas?</p>
+        <ol class="example-steps">
+          <li>Identifica el tipo de relación: más camisas requieren más tela. <strong>Es directa.</strong></li>
+          <li>Plantea: si 2 camisas → 3 metros, entonces 15 camisas → ¿X metros?</li>
+          <li>Aplica la fórmula: <strong>X = (3 × 15) / 2</strong></li>
+          <li>Calcula: <strong>X = 45 / 2 = 22,5 metros</strong></li>
+        </ol>
+      </section>
+
+      <section class="tool-section">
+        <h2>Ejemplo paso a paso (inversa)</h2>
+        <p>Un tanque se llena con 5 grifos abiertos en 12 horas. ¿En cuánto tiempo se llenará con 8 grifos?</p>
+        <ol class="example-steps">
+          <li>Identifica la relación: más grifos abiertos = menos tiempo para llenarse. <strong>Es inversa.</strong></li>
+          <li>Plantea: si 5 grifos → 12 horas, entonces 8 grifos → ¿X horas?</li>
+          <li>Aplica la fórmula inversa: <strong>X = (5 × 12) / 8</strong></li>
+          <li>Calcula: <strong>X = 60 / 8 = 7,5 horas</strong></li>
+        </ol>
+      </section>
+
+      <section class="tool-section">
+        <h2>¿Para qué te sirve en tu negocio?</h2>
+        <p>Algunos usos típicos donde la regla de tres resuelve cuentas reales:</p>
+        <ul class="usage-list">
+          <li><strong>Escalar costos:</strong> "Si 100 unidades me costaron $X, ¿cuánto me costarán 750?"</li>
+          <li><strong>Ajustar recetas o producción:</strong> "Esta receta es para 4 porciones, ¿cuánto necesito de cada ingrediente para 25?"</li>
+          <li><strong>Calcular comisiones:</strong> "Si por vender $5.000.000 gano $250.000 de comisión, ¿cuánto gano por vender $12.000.000?"</li>
+          <li><strong>Repartir tiempos de trabajo:</strong> "Si 3 personas terminan en 8 horas, ¿cuántas horas se demoran 5?" (inversa)</li>
+          <li><strong>Convertir medidas o unidades:</strong> "Si 1 dólar equivale a 4.000 pesos, ¿cuántos pesos son 350 dólares?"</li>
+          <li><strong>Repartir ganancias entre socios:</strong> "Si por aportar 30% de la inversión me corresponden $X, ¿cuánto le corresponde al socio que aportó 70%?"</li>
+        </ul>
+      </section>
+
+      <!-- FAQ -->
+      <section class="tool-section faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Preguntas frecuentes</h2>
+
+        <details>
+          <summary>¿Cuándo uso regla de tres directa y cuándo inversa?</summary>
+          <p>Pregúntate: si una cantidad aumenta, ¿la otra también aumenta? Entonces es <strong>directa</strong>. Si una aumenta y la otra disminuye, es <strong>inversa</strong>. Más unidades = más plata (directa). Más obreros = menos días (inversa).</p>
+        </details>
+
+        <details>
+          <summary>¿Cuál es la fórmula?</summary>
+          <p><strong>Directa:</strong> X = (B × C) / A &nbsp;—&nbsp; <strong>Inversa:</strong> X = (A × B) / C. En la directa multiplicas en cruz; en la inversa multiplicas en línea recta.</p>
+        </details>
+
+        <details>
+          <summary>¿Funciona con decimales y números grandes?</summary>
+          <p>Sí. Puedes escribir números con punto separador de miles (1.500.000) y coma decimal (3,14). La calculadora respeta el formato colombiano.</p>
+        </details>
+
+        <details>
+          <summary>¿Y si el resultado da con muchos decimales?</summary>
+          <p>La calculadora muestra hasta 4 decimales para precisión. Si quieres redondear, usa el valor a la cantidad de decimales que necesites en tu contexto (por ejemplo, en dinero suelen ser 0 o 2 decimales).</p>
+        </details>
+
+        <details>
+          <summary>¿Cuál es la diferencia entre regla de tres simple y compuesta?</summary>
+          <p>En la <strong>simple</strong> solo hay dos magnitudes en juego (precio y cantidad, por ejemplo). En la <strong>compuesta</strong> intervienen tres o más (por ejemplo: 5 obreros trabajando 8 horas durante 3 días… ¿qué pasa si cambian las tres variables?). Tenemos una calculadora separada para esa.</p>
+        </details>
+      </section>
+
+      <!-- Herramientas relacionadas -->
+      <section class="tool-section">
+        <h2>Herramientas relacionadas</h2>
+        <div class="related">
+          <a href="/matematicas/calculadora-porcentaje/" class="tool-card">
+            <span class="tool-tag">Matemática</span>
+            <h3>Calculadora de porcentaje</h3>
+            <p>Calcula qué porcentaje representa un valor de otro o cuánto es un % de un total.</p>
+            <span class="tool-soon">Próximamente</span>
+          </a>
+          <a href="/matematicas/regla-de-tres-compuesta/" class="tool-card">
+            <span class="tool-tag">Matemática</span>
+            <h3>Regla de tres compuesta</h3>
+            <p>Resuelve problemas con tres o más magnitudes proporcionales.</p>
+            <span class="tool-soon">Próximamente</span>
+          </a>
+          <a href="/matematicas/descuentos-sucesivos/" class="tool-card">
+            <span class="tool-tag">Matemática</span>
+            <h3>Descuentos sucesivos</h3>
+            <p>Calcula el efecto de aplicar varios descuentos en cadena.</p>
+            <span class="tool-soon">Próximamente</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Feedback -->
+      <section class="feedback" aria-label="Tu opinión">
+        <p class="feedback-prompt">¿Esta calculadora te sirvió?</p>
+        <div class="feedback-buttons">
+          <button class="btn btn-secondary" data-feedback="up" type="button">👍 Sí, gracias</button>
+          <button class="btn btn-secondary" data-feedback="down" type="button">👎 No del todo</button>
+        </div>
+        <p class="feedback-thanks" hidden>¡Gracias por avisarnos!</p>
+      </section>
+
     </div>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-meta">
+      <p>© <span id="year">2026</span> Wapps. Hecho con cuidado en Colombia. <a href="/" style="color: var(--color-accent);">Ver todas las herramientas</a></p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/utils/format.js" defer></script>
+  <script src="/assets/js/utils/validate.js" defer></script>
+  <script src="/assets/js/utils/share.js" defer></script>
+  <script src="/assets/js/utils/analytics.js" defer></script>
+  <script src="/matematicas/_shared/matematicas.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

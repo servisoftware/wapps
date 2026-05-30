@@ -32,7 +32,7 @@
     { name: 'Honorarios bruto a neto', tag: 'Tributaria', keywords: 'honorarios bruto neto retencion independiente', url: '/tributarias/honorarios-bruto-neto/', available: false },
 
     // Matemáticas
-    { name: 'Regla de tres simple', tag: 'Matemática', keywords: 'regla tres simple proporcion directa inversa', url: '/matematicas/regla-de-tres-simple/', available: false },
+    { name: 'Regla de tres simple', tag: 'Matemática', keywords: 'regla tres simple proporcion directa inversa', url: '/matematicas/regla-de-tres-simple/', available: true },
     { name: 'Porcentajes', tag: 'Matemática', keywords: 'porcentaje porciento sacar', url: '/matematicas/calculadora-porcentaje/', available: false },
     { name: 'Promedio', tag: 'Matemática', keywords: 'promedio media aritmetica', url: '/matematicas/promedio/', available: false },
 
