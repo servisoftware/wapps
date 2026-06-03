@@ -1,0 +1,30 @@
+# ============================================
+# Wapps · Patrones a ignorar en git
+# ============================================
+
+# Credenciales de deploy (CRÍTICO no commitear)
+_deploy/.env.deploy
+.env
+.env.*
+!.env.*.example
+!_deploy/.env.deploy.example
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Datos sensibles del backend Docker (si los hay)
+postgres/data/
+
+# Archivos temporales
+*.bak
+*~
+oldindex.html
