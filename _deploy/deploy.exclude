@@ -1,0 +1,58 @@
+# ============================================
+# Wapps · Patrones a excluir del deploy
+# ============================================
+# Cada línea es un patrón glob (similar a .gitignore) de
+# archivos/carpetas que NO deben subirse a Hostinger.
+# Las líneas que empiezan con # son comentarios.
+
+# ---------- Control de versiones ----------
+.git
+.gitignore
+.gitattributes
+
+# ---------- Toolkit de deploy (no debe vivir en producción) ----------
+_deploy
+
+# ---------- Infraestructura local (Docker, etc.) ----------
+docker-compose.yml
+docker-compose.*.yml
+Dockerfile
+nginx
+php
+postgres
+
+# ---------- Documentación interna ----------
+README.md
+*.md
+
+# ---------- Paquetes de actualización (no se sirven) ----------
+*.zip
+wapps-update-*
+
+# ---------- Archivos del sistema operativo ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Editores e IDE ----------
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# ---------- Logs y temporales ----------
+*.log
+tmp
+temp
+.cache
+
+# ---------- Credenciales (por si acaso) ----------
+.env
+.env.*
+secrets
+
+# ---------- Residuos comunes ----------
+oldindex.html
+backup
+*.bak
