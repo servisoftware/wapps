@@ -80,7 +80,7 @@
       resultsBox.innerHTML = `
         <div class="search-empty">
           No encontramos "${escapeHtml(query)}". ¿Quieres
-          <a href="mailto:hola@wapps.co?subject=Sugerencia%20de%20herramienta">sugerirla</a>?
+          <a href="mailto:contactar@servisoftware.com?subject=Sugerencia%20de%20herramienta">sugerirla</a>?
         </div>
       `;
       resultsBox.hidden = false;

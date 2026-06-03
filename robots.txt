@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /_*
 
-Sitemap: https://wapps.co/sitemap.xml
+Sitemap: https://wapps.servisoftware.com/sitemap.xml
