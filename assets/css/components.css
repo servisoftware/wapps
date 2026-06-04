@@ -43,6 +43,7 @@
 /* ---------- Buscador ---------- */
 .search {
   position: relative;
+  z-index: 50;
   max-width: 520px;
 }
 
