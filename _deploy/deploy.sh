@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 ###############################################################
-# Wapps · deploy.sh (v2)
+# Wapps · deploy.sh (v3)
 # Despliegue a Hostinger con soporte para SFTP, FTPES y FTP.
+#
+# v3: la clave nunca aparece en pantalla ni en la lista de procesos.
+#     Las exclusiones de deploy.exclude ahora sí excluyen carpetas.
+#     - Se entrega a lftp por variable de entorno (--env-password),
+#       no como argumento de la línea de comandos.
+#     - Toda la salida de lftp pasa por ocultar_clave().
 #
 # Por defecto corre en DRY-RUN (te dice qué subiría sin subir).
 # Para subir realmente, agrega --apply.
@@ -33,7 +39,7 @@ while [[ $# -gt 0 ]]; do
     --dry-run) MODE="dry-run"; shift ;;
     --help|-h)
       cat << 'HELP'
-Wapps · deploy.sh (v2)
+Wapps · deploy.sh (v3)
 
 Uso:
   bash _deploy/deploy.sh              Dry-run: muestra qué subiría
@@ -72,6 +78,19 @@ log_section() {
   echo -e "${BOLD}${BLUE}  $1${NC}"
   echo -e "${BOLD}${BLUE}═══════════════════════════════════════════════════${NC}"
   echo ""
+}
+
+# Oculta la clave en cualquier texto que imprima lftp.
+#  1) reemplaza la clave tal cual aparezca (sin escapar)
+#  2) reemplaza "usuario:clave@" dentro de URLs (lftp la codifica, ej. %2F)
+ocultar_clave() {
+  local linea
+  while IFS= read -r linea || [[ -n "$linea" ]]; do
+    if [[ -n "${SFTP_PASS:-}" ]]; then
+      linea="${linea//"$SFTP_PASS"/****}"
+    fi
+    printf '%s\n' "$linea"
+  done | sed -E 's#((s?ftps?)://)[^/@[:space:]]+@#\1***@#g'
 }
 
 abort() {
@@ -175,7 +194,11 @@ esac
 # ---------- 5. Probar conexión ----------
 log_step "Probando conexión $PROTOCOL"
 
-TEST_OUTPUT=$(lftp -u "$SFTP_USER,$SFTP_PASS" -p "$SFTP_PORT" "$URL" -e "
+# La clave viaja en LFTP_PASSWORD (variable de entorno), no en la línea
+# de comandos: así tampoco se ve con `ps` mientras corre el deploy.
+export LFTP_PASSWORD="$SFTP_PASS"
+
+TEST_OUTPUT=$(lftp --env-password -u "$SFTP_USER" -p "$SFTP_PORT" "$URL" -e "
 $LFTP_PRE
 set net:max-retries 1
 set net:timeout 10
@@ -184,7 +207,7 @@ bye
 " 2>&1) || {
   log_error "No pude conectar al servidor"
   log_info "Verifica protocolo, host, puerto y credenciales en .env.deploy"
-  echo "$TEST_OUTPUT" | tail -5 | sed 's/^/    /'
+  echo "$TEST_OUTPUT" | tail -5 | ocultar_clave | sed 's/^/    /'
   echo ""
   if [[ "$PROTOCOL" == "sftp" ]]; then
     log_info "Si tu plan no tiene SFTP habilitado, prueba PROTOCOL=\"ftps\"."
@@ -211,10 +234,18 @@ LOCAL_FILES=$(find "$PROJECT_DIR" -type f \
 log_info "Archivos candidatos a subir: $LOCAL_FILES (aprox)"
 
 # ---------- 7. Exclusiones ----------
+# lftp solo excluye CARPETAS si el patrón termina en "/" (".venv/").
+# Para que deploy.exclude funcione como uno espera, cada patrón se
+# agrega en sus dos formas: "nombre" (archivos) y "nombre/" (carpetas,
+# a cualquier profundidad).
 EXCLUDE_ARGS=""
-while IFS= read -r pattern; do
-  [[ -z "$pattern" || "$pattern" =~ ^[[:space:]]*# ]] && continue
-  EXCLUDE_ARGS="$EXCLUDE_ARGS --exclude-glob $pattern"
+while IFS= read -r pattern || [[ -n "$pattern" ]]; do
+  pattern="${pattern%$'\r'}"                       # por si el archivo tiene finales CRLF
+  pattern="${pattern#"${pattern%%[![:space:]]*}"}"  # quitar espacios al inicio
+  pattern="${pattern%"${pattern##*[![:space:]]}"}"  # quitar espacios al final
+  [[ -z "$pattern" || "$pattern" == \#* ]] && continue
+  pattern="${pattern%/}"
+  EXCLUDE_ARGS="$EXCLUDE_ARGS --exclude-glob $pattern --exclude-glob $pattern/"
 done < "$EXCLUDE_FILE"
 
 # ---------- 8. Ejecutar ----------
@@ -235,7 +266,7 @@ else
 fi
 
 set +e
-lftp -u "$SFTP_USER,$SFTP_PASS" -p "$SFTP_PORT" "$URL" << LFTPEOF
+lftp --env-password -u "$SFTP_USER" -p "$SFTP_PORT" "$URL" 2>&1 << LFTPEOF | ocultar_clave
 $LFTP_PRE
 set net:max-retries 3
 set net:reconnect-interval-base 3
@@ -244,8 +275,9 @@ cd $REMOTE_PATH
 mirror $MIRROR_OPTS $EXCLUDE_ARGS . .
 bye
 LFTPEOF
-LFTP_EXIT=$?
+LFTP_EXIT=${PIPESTATUS[0]}
 set -e
+unset LFTP_PASSWORD
 
 echo ""
 
