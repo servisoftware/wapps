@@ -63,3 +63,4 @@ venv
 __pycache__
 *.pyc
 node_modules
+_template.html
