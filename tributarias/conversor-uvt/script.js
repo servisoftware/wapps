@@ -146,8 +146,8 @@
   // Valores típicos en UVT y sus conceptos asociados
   const REFERENCIAS = [
     { uvts: 1, concepto: '1 UVT' },
-    { uvts: 10, concepto: 'Sanción mínima por extemporaneidad' },
-    { uvts: 27, concepto: 'Tope para retención en compras' },
+    { uvts: 2, concepto: 'Base mínima de retención en servicios (desde jul. 2026)' },
+    { uvts: 10, concepto: 'Sanción mínima · base mínima de retención en compras (desde jul. 2026)' },
     { uvts: 100, concepto: 'Tope frecuente en topes pequeños' },
     { uvts: 1400, concepto: 'Tope declaración renta (consignaciones/ingresos)' },
     { uvts: 3500, concepto: 'Tope responsable de IVA / ingresos brutos' },
